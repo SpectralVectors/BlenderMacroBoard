@@ -1,22 +1,66 @@
+'''
+Original Keycode list: 
+https://docs.circuitpython.org/projects/hid/en/latest/_modules/adafruit_hid/keycode.html#Keycode
+
+Shortcode list (eg: instead of writing: Keycode.A, you can just write: a):
+
+Letters: 
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+
+Numbers(At the top of the keyboard, NOT the Numpad): 
+kb1, kb2, kb3, kb4, kb5, kb6, kb7, kb8, kb9, kb0
+
+Actions: 
+enter, esc, backspace, tab, space, caps_lock, insert, delete, home, end, page_up,
+page_down, print_screen, scroll_lock, pause
+
+Modifiers:
+shift, ctrl, alt, os, right_shift, right_ctrl, right_alt, right_os
+
+Arrows:
+right, up, left, down
+
+Symbols: 
+minus, equals, left_bracket, right_bracket, backslash, pound, hash, semicolon, 
+quote, grave_accent, comma, period, dot, slash 
+
+Function Keys: 
+f1, f2, f3, f4, f5,f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, 
+f19, f20, f21, f22, f23, f24
+
+Numpad:
+np1, np2, np3, np4, np5, np6, np7, np8, np9, np0, np_numlock, np_slash, np_star,
+np_minus, np_plus, np_enter, np_dot
+
+The Keyboard Layout, for reference:
+
+|1|2|3|
+|4|5|6|
+|7|8|9|0|
+|R|R|R|
+
+'''
 # Importing the libraries we need
 import time
 import usb_hid
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+from presets.shortcodes import *
 
 # Convenience variable
 keyboard = Keyboard(usb_hid.devices)
+text = KeyboardLayoutUS(keyboard)
 
-# Keycode list: https://docs.circuitpython.org/projects/hid/en/latest/_modules/adafruit_hid/keycode.html#Keycode
+def key(Keycode):
+    keyboard.send(Keycode)
+    time.sleep(0.01)
 
-# The Keyboard Layout, for reference:
+def keys(Keycodes):
+    for Keycode in Keycodes:
+        keyboard.send(Keycode)
+    time.sleep(0.01)
 
-'''
-|1|2|3|
-|4|5|6|
-|7|8|9|0|
-|R|R|R|
-'''
 
 # Add your own custom macros below:
 
@@ -27,12 +71,12 @@ keyboard = Keyboard(usb_hid.devices)
 ### Push Buttons
 
 def Page1_Button1():
-    print('p1b1')
-    time.sleep(0.1)
+    # Rotate Y 45 degrees
+    keys([r, y, kb4, kb5, enter])
 
 def Page1_Button2():
-    print('p1b2')
-    time.sleep(0.1)
+    # Rotate X 45 degrees
+    keys([f12])
 
 def Page1_Button3():
     print('p1b3')
@@ -65,16 +109,16 @@ def Page1_Button9():
 ### Rotaries
 
 def Page1_Rotary1_Left():
-    print('p1r1l')
-    time.sleep(0.1)
+    # Rotate X 3 degrees
+    keys([r, x, kb3, enter])
 
 def Page1_Rotary1_Push():
     print('p1r1p')
     time.sleep(0.1)
 
 def Page1_Rotary1_Right():
-    print('p1r1r')
-    time.sleep(0.1)
+    # Rotate X -3 degrees
+    keys([r, x, minus, kb3, enter])
 
 def Page1_Rotary2_Left():
     print('p1r2l')
