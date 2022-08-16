@@ -12,6 +12,81 @@ bl_info = {
 
 import bpy
 
+class KeyRotX(bpy.types.Operator):
+    """Switch the current area to the Python Console"""
+    
+    bl_idname = "addon.keyframe_rotation_x"
+    bl_label = "Keyframe Rotation - X"
+
+    def execute(self, context):
+
+        current_frame = bpy.data.scenes['Scene'].frame_current
+        context.object.keyframe_insert(data_path='rotation_euler', index=0, frame=current_frame)
+
+        return {'FINISHED'}
+
+class KeyRotY(bpy.types.Operator):
+    """Switch the current area to the Python Console"""
+    
+    bl_idname = "addon.keyframe_rotation_y"
+    bl_label = "Keyframe Rotation - Y"
+
+    def execute(self, context):
+
+        current_frame = bpy.data.scenes['Scene'].frame_current
+        context.object.keyframe_insert(data_path='rotation_euler', index=1, frame=current_frame)
+        
+        return {'FINISHED'}
+
+class KeyRotZ(bpy.types.Operator):
+    """Switch the current area to the Python Console"""
+    
+    bl_idname = "addon.keyframe_rotation_z"
+    bl_label = "Keyframe Rotation - Z"
+
+    def execute(self, context):
+
+        current_frame = bpy.data.scenes['Scene'].frame_current
+        context.object.keyframe_insert(data_path='rotation_euler', index=2, frame=current_frame)
+        
+        return {'FINISHED'}
+
+class SwitchToConsole(bpy.types.Operator):
+    """Switch the current area to the Python Console"""
+    
+    bl_idname = "addon.switch_to_console"
+    bl_label = "Switch to Console"
+
+    def execute(self, context):
+
+        # bpy.ops.screen.area_split(direction='HORIZONTAL', factor=0.999)
+        # bpy.context.screen.areas[-1].type = 'CONSOLE'
+
+        bmp = context.scene.bmp
+        new_type = 'CONSOLE'
+        # This stores our current area so we can return to it
+        bmp.current_type = bpy.context.area.type
+        # Now we switch to the new area type
+        bpy.context.area.type = new_type
+        
+        return {'FINISHED'}
+
+class BackFromConsole(bpy.types.Operator):
+    """Switch the Console back to the previous user area type"""
+    
+    bl_idname = "addon.back_from_console"
+    bl_label = "Back from Console"
+
+    def execute(self, context):
+
+        # bpy.ops.screen.area_close()
+
+        bmp = context.scene.bmp
+        bpy.context.area.type = bmp.current_type
+        context.object.hide_render = context.object.hide_render
+        
+        return {'FINISHED'}
+
 class AssignKey1(bpy.types.Operator):
     """Assign an Operator to Key 1"""
     
@@ -23,21 +98,21 @@ class AssignKey1(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key1Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key1Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key1 = f'{CategoryName} - {Key1Name}'
+        bmp.Key1 = f'{CategoryName} - {Key1Name}'
         
         return {'FINISHED'}
 
@@ -52,21 +127,21 @@ class AssignKey2(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key2Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key2Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key2 = f'{CategoryName} - {Key2Name}'
+        bmp.Key2 = f'{CategoryName} - {Key2Name}'
         
         return {'FINISHED'}
 
@@ -81,21 +156,21 @@ class AssignKey3(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key3Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key3Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key3 = f'{CategoryName} - {Key3Name}'
+        bmp.Key3 = f'{CategoryName} - {Key3Name}'
         
         return {'FINISHED'}
 
@@ -110,21 +185,21 @@ class AssignKey4(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key4Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key4Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key4 = f'{CategoryName} - {Key4Name}'
+        bmp.Key4 = f'{CategoryName} - {Key4Name}'
         
         return {'FINISHED'}
 
@@ -139,21 +214,21 @@ class AssignKey5(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key5Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key5Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key5 = f'{CategoryName} - {Key5Name}'
+        bmp.Key5 = f'{CategoryName} - {Key5Name}'
         
         return {'FINISHED'}
 
@@ -168,21 +243,21 @@ class AssignKey6(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key6Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key6Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key6 = f'{CategoryName} - {Key6Name}'
+        bmp.Key6 = f'{CategoryName} - {Key6Name}'
         
         return {'FINISHED'}
 
@@ -197,21 +272,21 @@ class AssignKey7(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key7Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key7Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key7 = f'{CategoryName} - {Key7Name}'
+        bmp.Key7 = f'{CategoryName} - {Key7Name}'
         
         return {'FINISHED'}
 
@@ -226,21 +301,21 @@ class AssignKey8(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key8Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key8Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key8 = f'{CategoryName} - {Key8Name}'
+        bmp.Key8 = f'{CategoryName} - {Key8Name}'
         
         return {'FINISHED'}
 
@@ -255,21 +330,21 @@ class AssignKey9(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        Key9Name = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        Key9Name = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.Key9 = f'{CategoryName} - {Key9Name}'
+        bmp.Key9 = f'{CategoryName} - {Key9Name}'
         
         return {'FINISHED'}
 
@@ -284,21 +359,21 @@ class AssignR1Left(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R1LeftName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R1LeftName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R1Left = f'{CategoryName} - {R1LeftName}'
+        bmp.R1Left = f'{CategoryName} - {R1LeftName}'
         
         return {'FINISHED'}
 
@@ -313,21 +388,21 @@ class AssignR1Push(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R1PushName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R1PushName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R1Push = f'{CategoryName} - {R1PushName}'
+        bmp.R1Push = f'{CategoryName} - {R1PushName}'
         
         return {'FINISHED'}
 
@@ -342,21 +417,21 @@ class AssignR1Right(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R1RightName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R1RightName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R1Right = f'{CategoryName} - {R1RightName}'
+        bmp.R1Right = f'{CategoryName} - {R1RightName}'
         
         return {'FINISHED'}
 
@@ -371,21 +446,21 @@ class AssignR2Left(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R2LeftName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R2LeftName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R2Left = f'{CategoryName} - {R2LeftName}'
+        bmp.R2Left = f'{CategoryName} - {R2LeftName}'
         
         return {'FINISHED'}
 
@@ -400,21 +475,21 @@ class AssignR2Push(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R2PushName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R2PushName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R2Push = f'{CategoryName} - {R2PushName}'
+        bmp.R2Push = f'{CategoryName} - {R2PushName}'
         
         return {'FINISHED'}
 
@@ -429,21 +504,21 @@ class AssignR2Right(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R2RightName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R2RightName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R2Right = f'{CategoryName} - {R2RightName}'
+        bmp.R2Right = f'{CategoryName} - {R2RightName}'
         
         return {'FINISHED'}
 
@@ -458,21 +533,21 @@ class AssignR3Left(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R3LeftName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R3LeftName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R3Left = f'{CategoryName} - {R3LeftName}'
+        bmp.R3Left = f'{CategoryName} - {R3LeftName}'
         
         return {'FINISHED'}
 
@@ -487,21 +562,21 @@ class AssignR3Push(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R3PushName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R3PushName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R3Push = f'{CategoryName} - {R3PushName}'
+        bmp.R3Push = f'{CategoryName} - {R3PushName}'
         
         return {'FINISHED'}
 
@@ -516,28 +591,28 @@ class AssignR3Right(bpy.types.Operator):
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         col = layout.column()
-        col.prop(bmb_props, 'category', expand=False)
-        col.prop(bmb_props, 'operator', expand=False)
+        col.prop(bmp, 'category', expand=False)
+        col.prop(bmp, 'operator', expand=False)
 
     def execute(self, context):
 
-        bmb_props = context.scene.bmb_props
+        bmp = context.scene.bmp
 
-        CategoryName = str(bmb_props.category).capitalize()
-        R3RightName = str(bmb_props.operator).replace('_',' ').capitalize()
+        CategoryName = str(bmp.category).capitalize()
+        R3RightName = str(bmp.operator).replace('_',' ').capitalize()
 
-        bmb_props.R3Right = f'{CategoryName} - {R3RightName}'
+        bmp.R3Right = f'{CategoryName} - {R3RightName}'
         
         return {'FINISHED'}
 
 class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
     Page: bpy.props.EnumProperty(
-        name='Page',
+        name='Macro Page',
         description='The page you are currently editing',
         items=[('ONE', '1', 'Page 1'),
         ('TWO', '2', 'Page 2'),
@@ -675,7 +750,7 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
     def get_operators(self, context):
         operator_list = []
-        op_cat = eval(f'bpy.ops.{context.scene.bmb_props.category}')
+        op_cat = eval(f'bpy.ops.{context.scene.bmp.category}')
         op_list = dir(op_cat)
         
         for i in op_list:
@@ -696,13 +771,53 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         items=get_operators,
         options={'ANIMATABLE'},
         )
+    
+    current_type : bpy.props.StringProperty(
+        name='Current Type',
+        default='',
+        description='The current user area type',
+    )
+
+    p : bpy.props.StringProperty(
+        name='Macro Page',
+        default='Macro Page 1',
+        description='The current macro page',
+    )
+
+class TOPBAR_MT_p(bpy.types.Menu):
+    bl_label = 'Current Page'
+
+    def draw(self, context):
+        layout = self.layout
+
+    def menu_draw(self, context):
+
+        bmp = bpy.context.scene.bmp
+        page = bmp.p
+        if page == '1 - General': 
+            icon='SEQUENCE_COLOR_04'
+        elif page == '2 - Grease Pencil':
+            icon='SEQUENCE_COLOR_05'
+        elif page == '3 - Sculpt':
+            icon='SEQUENCE_COLOR_02'
+        elif page == '4 - VSE':
+            icon='SEQUENCE_COLOR_06'
+        else:
+            page = '1 - General'
+            icon='SEQUENCE_COLOR_04'
+
+        row = self.layout.row(align=True)
+        row.label(icon=icon)
+        row.label(text=page, icon='TEXT')
+        row.label(icon=icon)
+        
 
 class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
 
     def draw(self, context):
 
-        bmb_props = bpy.context.scene.bmb_props
+        bmp = bpy.context.scene.bmp
 
         layout = self.layout
         row = layout.row()
@@ -710,8 +825,8 @@ class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
         box=layout.box()
         box.label(text='Presets:', icon='DOCUMENTS')
         row=box.row()
-        row.prop(bmb_props, 'Page', icon='TEXT')
-        row.prop(bmb_props, 'Preset', icon='PRESET')
+        row.prop(bmp, 'Page', icon='TEXT')
+        row.prop(bmp, 'Preset', icon='PRESET')
         row=box.row(align=True)
         row.operator(AssignKey1.bl_idname, text='Save Current Page as Preset', icon='PRESET_NEW')
         row.operator(AssignKey1.bl_idname, text='Load Preset from File', icon='FILEBROWSER')
@@ -720,32 +835,32 @@ class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
         column.label(text='Customize Individual Keys:', icon='TOOL_SETTINGS')
         column.label(text='Keypad:', icon='VIEW_ORTHO')
         row = column.row(align=True)
-        row.operator(AssignKey1.bl_idname, text=bmb_props.Key1)
-        row.operator(AssignKey2.bl_idname, text=bmb_props.Key2)
-        row.operator(AssignKey3.bl_idname, text=bmb_props.Key3)
+        row.operator(AssignKey1.bl_idname, text=bmp.Key1)
+        row.operator(AssignKey2.bl_idname, text=bmp.Key2)
+        row.operator(AssignKey3.bl_idname, text=bmp.Key3)
         row = column.row(align=True)
-        row.operator(AssignKey4.bl_idname, text=bmb_props.Key4)
-        row.operator(AssignKey5.bl_idname, text=bmb_props.Key5)
-        row.operator(AssignKey6.bl_idname, text=bmb_props.Key6)
+        row.operator(AssignKey4.bl_idname, text=bmp.Key4)
+        row.operator(AssignKey5.bl_idname, text=bmp.Key5)
+        row.operator(AssignKey6.bl_idname, text=bmp.Key6)
         row = column.row(align=True)
-        row.operator(AssignKey7.bl_idname, text=bmb_props.Key7)
-        row.operator(AssignKey8.bl_idname, text=bmb_props.Key8)
-        row.operator(AssignKey9.bl_idname, text=bmb_props.Key9)
+        row.operator(AssignKey7.bl_idname, text=bmp.Key7)
+        row.operator(AssignKey8.bl_idname, text=bmp.Key8)
+        row.operator(AssignKey9.bl_idname, text=bmp.Key9)
         column.label(text='Rotary 1:', icon='FILE_REFRESH')
         row = column.row(align=True)
-        row.operator(AssignR1Left.bl_idname, text=bmb_props.R1Left, icon='LOOP_BACK')
-        row.operator(AssignR1Push.bl_idname, text=bmb_props.R1Push, icon='SORT_ASC')
-        row.operator(AssignR1Right.bl_idname, text=bmb_props.R1Right, icon='LOOP_FORWARDS')
+        row.operator(AssignR1Left.bl_idname, text=bmp.R1Left, icon='LOOP_BACK')
+        row.operator(AssignR1Push.bl_idname, text=bmp.R1Push, icon='SORT_ASC')
+        row.operator(AssignR1Right.bl_idname, text=bmp.R1Right, icon='LOOP_FORWARDS')
         column.label(text='Rotary 2:', icon='FILE_REFRESH')
         row = column.row(align=True)
-        row.operator(AssignR2Left.bl_idname, text=bmb_props.R2Left, icon='LOOP_BACK')
-        row.operator(AssignR2Push.bl_idname, text=bmb_props.R2Push, icon='SORT_ASC')
-        row.operator(AssignR2Right.bl_idname, text=bmb_props.R2Right, icon='LOOP_FORWARDS')
+        row.operator(AssignR2Left.bl_idname, text=bmp.R2Left, icon='LOOP_BACK')
+        row.operator(AssignR2Push.bl_idname, text=bmp.R2Push, icon='SORT_ASC')
+        row.operator(AssignR2Right.bl_idname, text=bmp.R2Right, icon='LOOP_FORWARDS')
         column.label(text='Rotary 3:', icon='FILE_REFRESH')
         row = column.row(align=True)
-        row.operator(AssignR3Left.bl_idname, text=bmb_props.R3Left, icon='LOOP_BACK')
-        row.operator(AssignR3Push.bl_idname, text=bmb_props.R3Push, icon='SORT_ASC')
-        row.operator(AssignR3Right.bl_idname, text=bmb_props.R3Right, icon='LOOP_FORWARDS')
+        row.operator(AssignR3Left.bl_idname, text=bmp.R3Left, icon='LOOP_BACK')
+        row.operator(AssignR3Push.bl_idname, text=bmp.R3Push, icon='SORT_ASC')
+        row.operator(AssignR3Right.bl_idname, text=bmp.R3Right, icon='LOOP_FORWARDS')
 
 
 
@@ -770,15 +885,26 @@ classes = [
     AssignR3Left,
     AssignR3Push,
     AssignR3Right,
+    SwitchToConsole,
+    BackFromConsole,
+    TOPBAR_MT_p,
+    KeyRotX,
+    KeyRotY,
+    KeyRotZ,
 ]
 
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
 
-    bpy.types.Scene.bmb_props = bpy.props.PointerProperty(type=BlenderMacroBoardProperties)
+    bpy.types.Scene.bmp = bpy.props.PointerProperty(type=BlenderMacroBoardProperties)
+    bpy.types.STATUSBAR_HT_header.prepend(TOPBAR_MT_p.menu_draw)
+    bpy.types.TOPBAR_MT_editor_menus.prepend(TOPBAR_MT_p.menu_draw)
 
 def unregister():
+    bpy.types.STATUSBAR_HT_header.remove(TOPBAR_MT_p.menu_draw)
+    bpy.types.TOPBAR_MT_editor_menus.remove(TOPBAR_MT_p.menu_draw)
+
     for cls in classes:
         bpy.utils.unregister_class(cls)
 
