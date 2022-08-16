@@ -1,41 +1,95 @@
 import time
 import board
-import digitalio
-from presets.default import *
+import digitalio as io
 
-btn0 = digitalio.DigitalInOut(board.GP0)
-btn0.direction = digitalio.Direction.INPUT
-btn0.pull = digitalio.Pull.DOWN
+from presets.layout import *
 
-btn1 = digitalio.DigitalInOut(board.GP1)
-btn1.direction = digitalio.Direction.INPUT
-btn1.pull = digitalio.Pull.DOWN
+input = io.Direction.INPUT
+down = io.Pull.DOWN
+
+pin0 = io.DigitalInOut(board.GP0)
+pin1 = io.DigitalInOut(board.GP1)
+pin2 = io.DigitalInOut(board.GP2)
+pin3 = io.DigitalInOut(board.GP3)
+pin4 = io.DigitalInOut(board.GP4)
+pin5 = io.DigitalInOut(board.GP5)
+pin6 = io.DigitalInOut(board.GP6)
+pin7 = io.DigitalInOut(board.GP7)
+pin8 = io.DigitalInOut(board.GP8)
+pin9 = io.DigitalInOut(board.GP9)
+pin10 = io.DigitalInOut(board.GP10)
+pin11 = io.DigitalInOut(board.GP11)
+pin12 = io.DigitalInOut(board.GP12)
+pin13 = io.DigitalInOut(board.GP13)
+pin14 = io.DigitalInOut(board.GP14)
+pin15 = io.DigitalInOut(board.GP15)
+
+# Setting up the Buttons
+
+button0 = pin0
+button0.direction = input
+button0.pull = down
+
+button1 = pin1
+button1.direction = input
+button1.pull = down
  
-btn2 = digitalio.DigitalInOut(board.GP2)
-btn2.direction = digitalio.Direction.INPUT
-btn2.pull = digitalio.Pull.DOWN
+button2 = pin2
+button2.direction = input
+button2.pull = down
 
-r1dirPin = digitalio.DigitalInOut(board.GP3)
-r1dirPin.direction = digitalio.Direction.INPUT
-r1dirPin.pull = digitalio.Pull.DOWN
+button3 = pin3
+button3.direction = input
+button3.pull = down
 
-r1stepPin = digitalio.DigitalInOut(board.GP4)
-r1stepPin.direction = digitalio.Direction.INPUT
-r1stepPin.pull = digitalio.Pull.DOWN
+button4 = pin4
+button4.direction = input
+button4.pull = down
 
-page = 1
+button5 = pin5
+button5.direction = input
+button5.pull = down
 
-previousValue = False
+button6 = pin6
+button6.direction = input
+button6.pull = down
+
+# Setting up the Rotaries
+
+rotary1PinA = pin10
+rotary1PinA.direction = input
+rotary1PinA.pull = down
+
+rotary1PinB = pin11
+rotary1PinB.direction = input
+rotary1PinB.pull = down
+
+rotary1Value = False
+
+rotary2PinA = pin12
+rotary2PinA.direction = input
+rotary2PinA.pull = down
+
+rotary2PinB = pin13
+rotary2PinB.direction = input
+rotary2PinB.pull = down
+
+rotary2Value = False
 
 while True:
-    if btn0.value:
+    # Page Button
+    if button0.value:
+        print('button 0')
         page += 1
         time.sleep(0.2)
-        if page > 4:
+        if page > totalpages:
             page = 1
-        print(page)
-
-    if btn1.value:
+        Button0(page)
+        time.sleep(0.1)
+        
+    # Buttons 1 - 9
+    if button1.value:
+        print('button 1')
         if page == 1:
             Page1_Button1()
         if page == 2:
@@ -46,7 +100,8 @@ while True:
             Page4_Button1()
         time.sleep(0.1)
         
-    if btn2.value:
+    if button2.value:
+        print('button 2')
         if page == 1:
             Page1_Button2()
         if page == 2:
@@ -56,13 +111,68 @@ while True:
         if page == 4:
             Page4_Button2()
         time.sleep(0.1)
+        
+    if button3.value:
+        print('button 3')
+        time.sleep(0.1)
+        
+    if button4.value:
+        print('button 4')
+        time.sleep(0.1)
+        
+    if button5.value:
+        print('button 5')
+        time.sleep(0.1)
+        
+    if button6.value:
+        print('button 6')
+        time.sleep(0.1)
 
-    if previousValue != r1stepPin.value:
-        if r1stepPin.value == False:
-            if r1dirPin.value == False:
-                print('Left')
-                Page1_Rotary1_Left()
+    # Rotaries
+    if rotary1Value != rotary1PinB.value:
+        if not rotary1PinB.value:
+            if not rotary1PinA.value:
+                if page == 1:
+                    Page1_Rotary1_Left()
+                if page == 2:
+                    Page2_Rotary1_Left()
+                if page == 3:
+                    Page3_Rotary1_Left()
+                if page == 4:
+                    Page4_Rotary1_Left()
             else:
-                print('Right')
-                Page1_Rotary1_Right()
-        previousValue = r1stepPin.value
+                if page == 1:
+                    Page1_Rotary1_Right()
+                if page == 2:
+                    Page2_Rotary1_Right()
+                if page == 3:
+                    Page3_Rotary1_Right()
+                if page == 4:
+                    Page4_Rotary1_Right()
+                    
+        rotary1Value = rotary1PinB.value
+        time.sleep(0.1)
+        
+    if rotary2Value != rotary2PinB.value:
+        if rotary2PinB.value == False:
+            if rotary2PinA.value == False:
+                if page == 1:
+                    Page1_Rotary2_Left()
+                if page == 2:
+                    Page2_Rotary2_Left()
+                if page == 3:
+                    Page3_Rotary2_Left()
+                if page == 4:
+                    Page4_Rotary2_Left()
+            else:
+                if page == 1:
+                    Page1_Rotary2_Right()
+                if page == 2:
+                    Page2_Rotary2_Right()
+                if page == 3:
+                    Page3_Rotary2_Right()
+                if page == 4:
+                    Page4_Rotary2_Right()
+                    
+        rotary2Value = rotary2PinB.value
+        time.sleep(0.1)
