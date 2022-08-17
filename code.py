@@ -183,8 +183,8 @@ while True:
         
         
     if rotary2Value != rotary2PinB.value:
-        if rotary2PinB.value == False:
-            if rotary2PinA.value == False:
+        if not rotary2PinB.value:
+            if not rotary2PinA.value:
                 if page == 1:
                     Page1_Rotary2_Left()
                 if page == 2:
@@ -205,8 +205,8 @@ while True:
         rotary2Value = rotary2PinB.value
         
     if rotary3Value != rotary3PinB.value:
-        if rotary3PinB.value == False:
-            if rotary3PinA.value == False:
+        if not rotary3PinB.value:
+            if not rotary3PinA.value:
                 if page == 1:
                     Page1_Rotary3_Left()
                 if page == 2:
