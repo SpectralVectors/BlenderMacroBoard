@@ -4,7 +4,8 @@ from .Pages.Page2 import *
 from .Pages.Page3 import *
 from .Pages.Page4 import *
 
-pins = 16
+# Update this section to reflect the number of pins, buttons, rotaries etc on your board
+pins = 19
 buttons = 10
 
 page = 1
@@ -16,12 +17,6 @@ pages = {
     '3':Page3Name,
     '4':Page4Name,
 }
-
-# This function updates the page number, and returns to the first page after the last
-def turn_page(page, totalpages):
-        page += 1
-        if page > totalpages:
-            page = 1
 
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):
