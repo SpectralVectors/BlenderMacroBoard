@@ -2,57 +2,20 @@ import time
 import board
 import digitalio as io
 
-from presets.layout import *
+from BoardSetup.Layout import *
 
 input = io.Direction.INPUT
 down = io.Pull.DOWN
 
-pin0 = io.DigitalInOut(board.GP0)
-pin1 = io.DigitalInOut(board.GP1)
-pin2 = io.DigitalInOut(board.GP2)
-pin3 = io.DigitalInOut(board.GP3)
-pin4 = io.DigitalInOut(board.GP4)
-pin5 = io.DigitalInOut(board.GP5)
-pin6 = io.DigitalInOut(board.GP6)
-pin7 = io.DigitalInOut(board.GP7)
-pin8 = io.DigitalInOut(board.GP8)
-pin9 = io.DigitalInOut(board.GP9)
-pin10 = io.DigitalInOut(board.GP10)
-pin11 = io.DigitalInOut(board.GP11)
-pin12 = io.DigitalInOut(board.GP12)
-pin13 = io.DigitalInOut(board.GP13)
-pin14 = io.DigitalInOut(board.GP14)
-pin15 = io.DigitalInOut(board.GP15)
+# Setting up the Pins
+for i in range(pins):
+    exec(f"pin{i} = io.DigitalInOut(board.GP{i})")
 
 # Setting up the Buttons
-
-button0 = pin0
-button0.direction = input
-button0.pull = down
-
-button1 = pin1
-button1.direction = input
-button1.pull = down
- 
-button2 = pin2
-button2.direction = input
-button2.pull = down
-
-button3 = pin3
-button3.direction = input
-button3.pull = down
-
-button4 = pin4
-button4.direction = input
-button4.pull = down
-
-button5 = pin5
-button5.direction = input
-button5.pull = down
-
-button6 = pin6
-button6.direction = input
-button6.pull = down
+for i in range(buttons):
+    exec(f"button{i} = pin{i}")
+    exec(f"button{i}.direction = input")
+    exec(f"button{i}.pull = down")
 
 # Setting up the Rotaries
 
@@ -64,7 +27,7 @@ rotary1PinB = pin11
 rotary1PinB.direction = input
 rotary1PinB.pull = down
 
-rotary1Value = False
+rotary1Value = rotary1PinB.value
 
 rotary2PinA = pin12
 rotary2PinA.direction = input
@@ -74,22 +37,28 @@ rotary2PinB = pin13
 rotary2PinB.direction = input
 rotary2PinB.pull = down
 
-rotary2Value = False
+rotary2Value = rotary2PinB.value
+
+rotary3PinA = pin14
+rotary3PinA.direction = input
+rotary3PinA.pull = down
+
+rotary3PinB = pin15
+rotary3PinB.direction = input
+rotary3PinB.pull = down
+
+rotary3Value = rotary3PinB.value
 
 while True:
     # Page Button
     if button0.value:
         print('button 0')
-        page += 1
-        time.sleep(0.2)
-        if page > totalpages:
-            page = 1
+        turn_page(page, totalpages)
         Button0(page)
         time.sleep(0.1)
         
     # Buttons 1 - 9
     if button1.value:
-        print('button 1')
         if page == 1:
             Page1_Button1()
         if page == 2:
@@ -101,7 +70,6 @@ while True:
         time.sleep(0.1)
         
     if button2.value:
-        print('button 2')
         if page == 1:
             Page1_Button2()
         if page == 2:
@@ -113,20 +81,82 @@ while True:
         time.sleep(0.1)
         
     if button3.value:
-        print('button 3')
+        if page == 1:
+            Page1_Button3()
+        if page == 2:
+            Page2_Button3()
+        if page == 3:
+            Page3_Button3()
+        if page == 4:
+            Page4_Button3()
         time.sleep(0.1)
         
     if button4.value:
-        print('button 4')
+        if page == 1:
+            Page1_Button4()
+        if page == 2:
+            Page2_Button4()
+        if page == 3:
+            Page3_Button4()
+        if page == 4:
+            Page4_Button4()
         time.sleep(0.1)
         
     if button5.value:
-        print('button 5')
+        if page == 1:
+            Page1_Button5()
+        if page == 2:
+            Page2_Button5()
+        if page == 3:
+            Page3_Button5()
+        if page == 4:
+            Page4_Button5()
         time.sleep(0.1)
         
     if button6.value:
-        print('button 6')
+        if page == 1:
+            Page1_Button6()
+        if page == 2:
+            Page2_Button6()
+        if page == 3:
+            Page3_Button6()
+        if page == 4:
+            Page4_Button6()
         time.sleep(0.1)
+
+    if button7.value:
+        if page == 1:
+            Page1_Button7()
+        if page == 2:
+            Page2_Button7()
+        if page == 3:
+            Page3_Button7()
+        if page == 4:
+            Page4_Button7()
+        time.sleep(0.1)
+
+    if button8.value:
+        if page == 1:
+            Page1_Button8()
+        if page == 2:
+            Page2_Button8()
+        if page == 3:
+            Page3_Button8()
+        if page == 4:
+            Page4_Button8()
+        time.sleep(0.1)
+        
+    if button9.value:
+        if page == 1:
+            Page1_Button9()
+        if page == 2:
+            Page2_Button9()
+        if page == 3:
+            Page3_Button9()
+        if page == 4:
+            Page4_Button9()
+        time.sleep(0.1)
+
 
     # Rotaries
     if rotary1Value != rotary1PinB.value:
@@ -148,10 +178,9 @@ while True:
                 if page == 3:
                     Page3_Rotary1_Right()
                 if page == 4:
-                    Page4_Rotary1_Right()
-                    
+                    Page4_Rotary1_Right()                  
         rotary1Value = rotary1PinB.value
-        time.sleep(0.1)
+        
         
     if rotary2Value != rotary2PinB.value:
         if rotary2PinB.value == False:
@@ -172,7 +201,27 @@ while True:
                 if page == 3:
                     Page3_Rotary2_Right()
                 if page == 4:
-                    Page4_Rotary2_Right()
-                    
+                    Page4_Rotary2_Right()                   
         rotary2Value = rotary2PinB.value
-        time.sleep(0.1)
+        
+    if rotary3Value != rotary3PinB.value:
+        if rotary3PinB.value == False:
+            if rotary3PinA.value == False:
+                if page == 1:
+                    Page1_Rotary3_Left()
+                if page == 2:
+                    Page2_Rotary3_Left()
+                if page == 3:
+                    Page3_Rotary3_Left()
+                if page == 4:
+                    Page4_Rotary3_Left()
+            else:
+                if page == 1:
+                    Page1_Rotary3_Right()
+                if page == 2:
+                    Page2_Rotary3_Right()
+                if page == 3:
+                    Page3_Rotary3_Right()
+                if page == 4:
+                    Page4_Rotary3_Right()                  
+        rotary3Value = rotary3PinB.value
