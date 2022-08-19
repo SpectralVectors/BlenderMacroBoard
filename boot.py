@@ -12,6 +12,6 @@ modeswitch.pull = down
 storage.remount('/', modeswitch.value)
 
 if modeswitch.value:
-    storage.disable_usb_drive()
-else:
     storage.enable_usb_drive()
+else:
+    storage.disable_usb_drive()
