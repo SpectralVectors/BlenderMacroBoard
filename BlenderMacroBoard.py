@@ -12,6 +12,29 @@ bl_info = {
 
 import bpy
 
+class InvokeConsoleOperator(bpy.types.Operator):
+    """Invoke a popup panel that lets you execute Python commands"""
+
+    bl_idname = "addon.invoke_console"
+    bl_label = "Execute Command"
+    bl_property = 'Command'
+
+    Command: bpy.props.StringProperty(
+        name='Command:',
+        description='The Python command you wish to execute',
+        default='',
+    )
+
+    def execute(self, context):
+        exec(self.Command)        
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self)
+
+    def draw(self, context):
+        self.layout.prop(self, 'Command')
+
 class KeyRotX(bpy.types.Operator):
     """Switch the current area to the Python Console"""
     
@@ -48,42 +71,6 @@ class KeyRotZ(bpy.types.Operator):
 
         current_frame = bpy.data.scenes['Scene'].frame_current
         context.object.keyframe_insert(data_path='rotation_euler', index=2, frame=current_frame)
-        
-        return {'FINISHED'}
-
-class SwitchToConsole(bpy.types.Operator):
-    """Switch the current area to the Python Console"""
-    
-    bl_idname = "addon.switch_to_console"
-    bl_label = "Switch to Console"
-
-    def execute(self, context):
-
-        # bpy.ops.screen.area_split(direction='HORIZONTAL', factor=0.999)
-        # bpy.context.screen.areas[-1].type = 'CONSOLE'
-
-        bmp = context.scene.bmp
-        new_type = 'CONSOLE'
-        # This stores our current area so we can return to it
-        bmp.current_type = bpy.context.area.type
-        # Now we switch to the new area type
-        bpy.context.area.type = new_type
-        
-        return {'FINISHED'}
-
-class BackFromConsole(bpy.types.Operator):
-    """Switch the Console back to the previous user area type"""
-    
-    bl_idname = "addon.back_from_console"
-    bl_label = "Back from Console"
-
-    def execute(self, context):
-
-        # bpy.ops.screen.area_close()
-
-        bmp = context.scene.bmp
-        bpy.context.area.type = bmp.current_type
-        context.object.hide_render = context.object.hide_render
         
         return {'FINISHED'}
 
@@ -780,7 +767,7 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
     p : bpy.props.StringProperty(
         name='Macro Page',
-        default='Macro Page 1',
+        default='GENERAL (Page 1)',
         description='The current macro page',
     )
 
@@ -794,22 +781,21 @@ class TOPBAR_MT_p(bpy.types.Menu):
 
         bmp = bpy.context.scene.bmp
         page = bmp.p
-        if page == '1 - General': 
-            icon='SEQUENCE_COLOR_04'
-        elif page == '2 - Grease Pencil':
-            icon='SEQUENCE_COLOR_05'
-        elif page == '3 - Sculpt':
-            icon='SEQUENCE_COLOR_02'
-        elif page == '4 - VSE':
-            icon='SEQUENCE_COLOR_06'
+        if page == 'GENERAL (Page 1)': 
+            icon='FILE_3D'
+        elif page == 'GREASE PENCIL (Page 2)':
+            icon='GPBRUSH_PEN'
+        elif page == 'SCULPT (Page 3)':
+            icon='BRUSH_SMEAR'
+        elif page == 'VSE (Page 4)':
+            icon='VIEW_CAMERA'
         else:
-            page = '1 - General'
-            icon='SEQUENCE_COLOR_04'
+            page = 'GENERAL (Page 1)'
+            icon='FILE_3D'
 
         row = self.layout.row(align=True)
         row.label(icon=icon)
-        row.label(text=page, icon='TEXT')
-        row.label(icon=icon)
+        row.label(text=page)
         
 
 class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
@@ -885,8 +871,7 @@ classes = [
     AssignR3Left,
     AssignR3Push,
     AssignR3Right,
-    SwitchToConsole,
-    BackFromConsole,
+    InvokeConsoleOperator,
     TOPBAR_MT_p,
     KeyRotX,
     KeyRotY,
@@ -898,12 +883,12 @@ def register():
         bpy.utils.register_class(cls)
 
     bpy.types.Scene.bmp = bpy.props.PointerProperty(type=BlenderMacroBoardProperties)
-    bpy.types.STATUSBAR_HT_header.prepend(TOPBAR_MT_p.menu_draw)
-    bpy.types.TOPBAR_MT_editor_menus.prepend(TOPBAR_MT_p.menu_draw)
+    bpy.types.STATUSBAR_HT_header.append(TOPBAR_MT_p.menu_draw)
+    #bpy.types.TOPBAR_MT_editor_menus.prepend(TOPBAR_MT_p.menu_draw)
 
 def unregister():
     bpy.types.STATUSBAR_HT_header.remove(TOPBAR_MT_p.menu_draw)
-    bpy.types.TOPBAR_MT_editor_menus.remove(TOPBAR_MT_p.menu_draw)
+    #bpy.types.TOPBAR_MT_editor_menus.remove(TOPBAR_MT_p.menu_draw)
 
     for cls in classes:
         bpy.utils.unregister_class(cls)

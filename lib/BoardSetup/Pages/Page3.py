@@ -5,7 +5,7 @@ from .._base import *
 ########################
 
 # Enter a name for this page
-Page3Name = 'Sculpt'
+Page3Name = 'SCULPT (Page 3)'
 
 ### Push Buttons
 

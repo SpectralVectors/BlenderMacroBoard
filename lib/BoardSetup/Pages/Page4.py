@@ -5,7 +5,7 @@ from .._base import *
 ########################
 
 # Enter a name for this page
-Page4Name = 'VSE'
+Page4Name = 'VSE (Page 4)'
 
 ### Push Buttons
 

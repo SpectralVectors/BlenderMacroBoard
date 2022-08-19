@@ -5,7 +5,7 @@ from .._base import *
 ########################
 
 # Enter a name for this page
-Page1Name = 'General'
+Page1Name = 'GENERAL (Page 1)'
 
 ### Push Buttons
 
@@ -28,6 +28,7 @@ def Page1_Button3():
     wait(0.1)
 
 def Page1_Button4():
+    kb.send(shift,ctrl,alt,a)
     run_script('G:/lib/scripts/ObjectTest.py')
     print('Page 1 Button 4')
     wait(0.1)

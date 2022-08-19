@@ -19,4 +19,5 @@ def run_script(filepath):
     kb.send(shift,ctrl,alt,a)
     text.write(str(f"exec(open('{filepath}').read())"))
     kb.send(enter)
-    kb.send(shift,ctrl,alt,b)
+    kb.send(enter)
+

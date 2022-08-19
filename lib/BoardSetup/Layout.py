@@ -3,6 +3,7 @@ from .Pages.Page1 import *
 from .Pages.Page2 import *
 from .Pages.Page3 import *
 from .Pages.Page4 import *
+from time import sleep
 
 # Update this section to reflect the number of pins, buttons, rotaries etc on your board
 pins = 19
@@ -23,9 +24,11 @@ def Button0(page):
     # Enters Python Code
     kb.send(shift,ctrl,alt,a)
     name = pages[str(page)]
-    text.write(f"C.scene.bmp.p='{page} - {name}'")
+    sleep(0.2)
+    text.write(f"bpy.context.scene.bmp.p = '{name}'")
     kb.send(enter)
-    kb.send(shift,ctrl,alt,b)
+    kb.send(enter)
+    kb.send(right,left)
 
 '''
 

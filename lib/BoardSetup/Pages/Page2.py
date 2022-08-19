@@ -5,7 +5,7 @@ from .._base import *
 ########################
 
 # Enter a name for this page
-Page2Name = 'Grease Pencil'
+Page2Name = 'GREASE PENCIL (Page 2)'
 
 ### Push Buttons
 
