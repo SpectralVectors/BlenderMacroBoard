@@ -5,7 +5,7 @@ import storage
 input = io.Direction.INPUT
 down = io.Pull.DOWN
 
-modeswitch = io.DigitalInOut(board.GP28)
+modeswitch = io.DigitalInOut(board.GP22)
 modeswitch.direction = input
 modeswitch.pull = down
 
