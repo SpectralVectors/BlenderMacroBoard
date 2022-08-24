@@ -7,7 +7,7 @@ An open-source, customizable control surface for Blender.
 The project runs on a Raspberry Pi Pico, a detailed build guide will come as the project continues. For now, this guide represents how to build and use the alpha prototype, and is recommended only for users familiar with microcontroller wiring and programming. This will change as the design details and features solidify.
 
 ### Wiring
-(All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins. The toggle switch control is found in 'boot.py')
+_All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins. The toggle switch control is found in 'boot.py'_
 
 Buttons 0-9 are wired with pins 0-9 on the Pico on one contact, the other contact goes to ground.
 
