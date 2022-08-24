@@ -34,7 +34,7 @@ If you wish to change/edit the functions of the board, you can do so anytime by 
 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
 
-### Roadmap
+## Roadmap
 At the moment the barrier to entry is quite high, I don't want to invest time in creating beginner-friendly build and usage guides until all the features solidify, and I can already see a number of changes that I would make to the code, and the wiring of the device itself.
 
 This would make a slimmer build with a custom PCB to mount keyswitches and a Pico on, and it would tidy up the mess of wires currently needed to use the device. (So would using a key-matrix, see above point about changes!) And creating a custom PCB to mount an RP2040 to could open up the range of IO possibilities even further.
