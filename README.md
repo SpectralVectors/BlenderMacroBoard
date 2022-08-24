@@ -12,7 +12,18 @@ _All of the wiring directions assume the use of the default 'code.py' file above
 Buttons 0-9 are wired with pins 0-9 on the Pico on one contact, the other contact goes to ground.
 
 The rotaries must be wired with their direction pins on consecutive Pico pins, so they are wired:
-Rotary 1A - Pin 10, Rotary 1B - Pin 11, Rotary2A - Pin 12, Rotary 2B - Pin 13, Rotary 3A - Pin 14, Rotary 3B - Pin 15
+
+Rotary 1A - Pin 10
+
+Rotary 1B - Pin 11
+
+Rotary 2A - Pin 12
+
+Rotary 2B - Pin 13
+
+Rotary 3A - Pin 14
+
+Rotary 3B - Pin 15
 
 If your rotaries have push button functionality, they can be wired the same way as Buttons 0-9
 
