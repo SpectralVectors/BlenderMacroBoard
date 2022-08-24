@@ -7,6 +7,8 @@ An open-source, customizable hardware control surface for Blender.
 The project runs on a Raspberry Pi Pico, a detailed build guide will come as the project continues. For now, this guide represents how to build and use the alpha prototype, and is recommended only for users familiar with microcontroller wiring and programming. This will change as the design details and features solidify.
 
 ### Layout
+![](/images/keyboard-layout.png)
+
 http://www.keyboard-layout-editor.com/#/gists/9135052b7d15b03b740d0f43d61bb3eb
 
 ### Wiring
