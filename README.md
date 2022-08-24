@@ -1,7 +1,7 @@
 # BlenderMacroBoard
 _Work in Progress - Alpha Build_
 
-An open-source, customizable control surface for Blender.
+An open-source, customizable hardware control surface for Blender.
 
 ## How to Setup & Use
 The project runs on a Raspberry Pi Pico, a detailed build guide will come as the project continues. For now, this guide represents how to build and use the alpha prototype, and is recommended only for users familiar with microcontroller wiring and programming. This will change as the design details and features solidify.
