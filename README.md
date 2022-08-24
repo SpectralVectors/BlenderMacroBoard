@@ -9,7 +9,7 @@ The project runs on a Raspberry Pi Pico, a detailed build guide will come as the
 ### Layout
 ![](/images/keyboard-layout.png)
 
-http://www.keyboard-layout-editor.com/#/gists/9135052b7d15b03b740d0f43d61bb3eb
+[KLE Layout Available Here](http://www.keyboard-layout-editor.com/#/gists/9135052b7d15b03b740d0f43d61bb3eb)
 
 ### Wiring
 _All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins. The toggle switch control is found in 'boot.py'_
