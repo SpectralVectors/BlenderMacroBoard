@@ -1,5 +1,5 @@
 # BlenderMacroBoard
-(Work in Progress - Alpha Build)
+_Work in Progress - Alpha Build_
 
 An open-source, customizable control surface for Blender.
 
