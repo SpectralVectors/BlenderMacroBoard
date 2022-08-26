@@ -14,7 +14,7 @@ The project runs on a Raspberry Pi Pico, a detailed build guide will come as the
 ### Wiring
 _All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins. The toggle switch control is found in 'boot.py'_
 
-Buttons 0-9 are wired with pins 0-9 on the Pico on one contact, the other contact goes to ground.
+Buttons 0-9 are wired with pins 0-9 on the Pico on one contact, the other contact goes to VBUS.
 
 The rotaries must be wired with their direction pins on consecutive Pico pins, so they are wired:
 
@@ -30,9 +30,9 @@ Rotary 3A - Pin 14
 
 Rotary 3B - Pin 15
 
-If your rotaries have push button functionality, they can be wired the same way as Buttons 0-9
+If your rotaries have push button functionality, they can be wired the same way as Buttons 0-9.
 
-A toggle switch must be wired with one contact going to Pin 22 on the Pico, and the other contact going to ground. This will control the 'write' mode that the Pico will boot into, one way will allow your PC to write to the Pico's memory, but prevent the Pico from writing to its own internal memory, and the other way will prevent your PC from writing to the Pico's memory, but will allow the Pico to write to itself.
+A toggle switch must be wired with one contact going to Pin 22 on the Pico, and the other contact going to VBUS. This will control the 'write' mode that the Pico will boot into, one way will allow your PC to write to the Pico's memory, but prevent the Pico from writing to its own internal memory, and the other way will prevent your PC from writing to the Pico's memory, but will allow the Pico to write to itself.
 
 Finally, a Reset button is added, with one contact going to the 'Run' pin on the Pico, and the other contact going to ground. This is necessary to 'Refresh' the Pico, as well as to allow the user to instantly reboot to change 'write' modes.
 
