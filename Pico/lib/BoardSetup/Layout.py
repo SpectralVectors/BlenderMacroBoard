@@ -5,21 +5,11 @@ from .Pages.Page3 import *
 from .Pages.Page4 import *
 from time import sleep as wait
 
-# Update this section to reflect the number of pins, buttons, rotaries etc on your board
-pins = 19
-buttons = 10
+# Update this section to reflect the number of Pages, GPIO pins, Buttons, Rotaries etc on your board
 
-rotaries = 3
-rotary_pins = {
-    '1':(10,11),
-    '2':(12,13),
-    '3':(14,15),
-    }
-rotary_button_pins = (
-    16, 17, 18,
-    )
-
+# This determines the starting Page
 page = 1
+# This defines how many Pages the pad loops through before returning to the starting Page
 totalpages = 4
 
 pages = {
@@ -28,6 +18,39 @@ pages = {
     '3':Page3Name,
     '4':Page4Name,
 }
+
+# This is the total number of pins used by the buttons and rotaries
+pins = 19
+
+# This is the total number of buttons, including the Page Button, which is Button 0
+buttons = 10
+
+# Button Pins are setup as:
+# Button Number : GPIO Pin Number
+button_pins = {
+    0:0,
+    1:1,
+    2:2,
+    3:3,
+    4:4,
+    5:5,
+    6:6,
+    7:7,
+    8:8,
+    9:9,
+    }
+
+# The total number of rotary encoders on your board
+rotaries = 3
+
+# The pins used by the rotary encoders, the first two must be consecutive GPIO pins
+# The pins are setup as:
+# (Rotary Pin A, Rotary Pin B, Rotary Button Pin)
+rotary_pins = {
+    1:(10,11,16),
+    2:(12,13,17),
+    3:(14,15,18),
+    }
 
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):

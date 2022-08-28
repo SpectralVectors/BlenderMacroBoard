@@ -13,23 +13,23 @@ for i in range(pins):
 
 # Setting up the Buttons
 for i in range(buttons):
-    exec(f"button{i} = pin{i}")
+    exec(f"button{i} = pin{button_pins[i]}")
     exec(f"button{i}.direction = input")
     exec(f"button{i}.pull = down")
 
 # Setting up the Rotaries
 for i in range(rotaries):
-    exec(f"rotary{i+1}PinA = pin{rotary_pins[str(i+1)][0]}")
+    exec(f"rotary{i+1}PinA = pin{rotary_pins[i+1][0]}")
     exec(f"rotary{i+1}PinA.direction = input")
     exec(f"rotary{i+1}PinA.pull = down")
     
-    exec(f"rotary{i+1}PinB = pin{rotary_pins[str(i+1)][1]}")
+    exec(f"rotary{i+1}PinB = pin{rotary_pins[i+1][1]}")
     exec(f"rotary{i+1}PinB.direction = input")
     exec(f"rotary{i+1}PinB.pull = down")
     
     exec(f"rotary{i+1}Value = rotary{i+1}PinB.value")
     
-    exec(f"rotary{i+1}Button = pin{rotary_button_pins[i]}")
+    exec(f"rotary{i+1}Button = pin{rotary_pins[i+1][2]}")
     exec(f"rotary{i+1}Button.direction = input")
     exec(f"rotary{i+1}Button.pull = down")
 
@@ -100,8 +100,7 @@ while True:
             else:
                 exec(f"Page{page}_Rotary1_Right()")                 
         rotary1Value = rotary1PinB.value
-        
-        
+       
     if rotary2Value != rotary2PinB.value:
         if not rotary2PinB.value:
             if not rotary2PinA.value:
