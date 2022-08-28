@@ -19,8 +19,6 @@ def Page1_Button2():
     kb.send(ctrl,z)
     print('Page 1 Button 2')
     wait(0.1)
-    # Run a script from the specified location
-    #run_script('G:/lib/scripts/ObjectTest.py')
 
 def Page1_Button3():
     kb.send(enter)
@@ -29,7 +27,7 @@ def Page1_Button3():
 
 def Page1_Button4():
     kb.send(shift,ctrl,alt,a)
-    run_script('G:/lib/scripts/ObjectTest.py')
+    run_script('G:/lib/Scripts/ObjectTest.py')
     print('Page 1 Button 4')
     wait(0.1)
 
