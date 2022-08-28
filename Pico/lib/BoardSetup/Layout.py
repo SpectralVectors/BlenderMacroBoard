@@ -52,6 +52,9 @@ rotary_pins = {
     3:(14,15,18),
     }
 
+# The total number of potentiometers
+pots = 0
+
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):
     print("Button 0")

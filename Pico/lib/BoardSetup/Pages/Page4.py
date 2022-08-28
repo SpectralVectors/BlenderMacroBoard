@@ -51,8 +51,8 @@ def Page4_Rotary1_Left():
     print('Page 4 Rotary 2 Left')
 
 
-def Page4_Rotary1_Push():
-    print('Page 4 Rotary 2 Push')
+def Page4_Rotary1_Button():
+    print('Page 4 Rotary 2 Button')
     wait(0.1)
 
 def Page4_Rotary1_Right():
@@ -63,8 +63,8 @@ def Page4_Rotary2_Left():
     print('Page 4 Rotary 2 Left')
 
 
-def Page4_Rotary2_Push():
-    print('Page 4 Rotary 2 Push')
+def Page4_Rotary2_Button():
+    print('Page 4 Rotary 2 Button')
     wait(0.1)
 
 def Page4_Rotary2_Right():
@@ -75,8 +75,8 @@ def Page4_Rotary3_Left():
     print('Page 4 Rotary 3 Left')
 
 
-def Page4_Rotary3_Push():
-    print('Page 4 Rotary 3 Push')
+def Page4_Rotary3_Button():
+    print('Page 4 Rotary 3 Button')
     wait(0.1)
 
 def Page4_Rotary3_Right():

@@ -51,8 +51,8 @@ def Page3_Rotary1_Left():
     print('Page 3 Rotary 1 Left')
     kb.send(s, x, kb2, enter)
 
-def Page3_Rotary1_Push():
-    print('Page 3 Rotary 1 Push')
+def Page3_Rotary1_Button():
+    print('Page 3 Rotary 1 Button')
     wait(0.1)
 
 def Page3_Rotary1_Right():
@@ -63,8 +63,8 @@ def Page3_Rotary2_Left():
     print('Page 3 Rotary 2 Left')
     kb.send(s, y, kb2, enter)
 
-def Page3_Rotary2_Push():
-    print('Page 3 Rotary 2 Push')
+def Page3_Rotary2_Button():
+    print('Page 3 Rotary 2 Button')
     wait(0.1)
 
 def Page3_Rotary2_Right():
@@ -76,8 +76,8 @@ def Page3_Rotary3_Left():
     print('Page 3 Rotary 3 Left')
     kb.send(s, z, kb2, enter)
 
-def Page3_Rotary3_Push():
-    print('Page 3 Rotary 3 Push')
+def Page3_Rotary3_Button():
+    print('Page 3 Rotary 3 Button')
     wait(0.1)
 
 def Page3_Rotary3_Right():
