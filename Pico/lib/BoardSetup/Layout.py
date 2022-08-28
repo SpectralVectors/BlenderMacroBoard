@@ -3,11 +3,21 @@ from .Pages.Page1 import *
 from .Pages.Page2 import *
 from .Pages.Page3 import *
 from .Pages.Page4 import *
-from time import sleep
+from time import sleep as wait
 
 # Update this section to reflect the number of pins, buttons, rotaries etc on your board
 pins = 19
 buttons = 10
+
+rotaries = 3
+rotary_pins = {
+    '1':(10,11),
+    '2':(12,13),
+    '3':(14,15),
+    }
+rotary_button_pins = (
+    16, 17, 18,
+    )
 
 page = 1
 totalpages = 4
@@ -21,10 +31,11 @@ pages = {
 
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):
+    print("Button 0")
     # Enters Python Code
     kb.send(shift,ctrl,alt,a)
     name = pages[str(page)]
-    sleep(0.2)
+    wait(0.2)
     text.write(f"bpy.context.scene.bmp.p = '{name}'")
     kb.send(enter)
     kb.send(enter)

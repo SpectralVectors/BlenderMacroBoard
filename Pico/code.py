@@ -1,6 +1,6 @@
-import time
 import board
 import digitalio as io
+from time import sleep as wait
 
 from BoardSetup.Layout import *
 
@@ -18,113 +18,79 @@ for i in range(buttons):
     exec(f"button{i}.pull = down")
 
 # Setting up the Rotaries
-rotaries = 3
-rotary_pins = {
-    '1':(10,11),
-    '2':(12,13),
-    '3':(14,15),
-    }
+for i in range(rotaries):
+    exec(f"rotary{i+1}PinA = pin{rotary_pins[str(i+1)][0]}")
+    exec(f"rotary{i+1}PinA.direction = input")
+    exec(f"rotary{i+1}PinA.pull = down")
+    
+    exec(f"rotary{i+1}PinB = pin{rotary_pins[str(i+1)][1]}")
+    exec(f"rotary{i+1}PinB.direction = input")
+    exec(f"rotary{i+1}PinB.pull = down")
+    
+    exec(f"rotary{i+1}Value = rotary{i+1}PinB.value")
+    
+    exec(f"rotary{i+1}Button = pin{rotary_button_pins[i]}")
+    exec(f"rotary{i+1}Button.direction = input")
+    exec(f"rotary{i+1}Button.pull = down")
 
-rotary1PinA = pin10
-rotary1PinA.direction = input
-rotary1PinA.pull = down
-
-rotary1PinB = pin11
-rotary1PinB.direction = input
-rotary1PinB.pull = down
-
-rotary1Value = rotary1PinB.value
-
-rotary2PinA = pin12
-rotary2PinA.direction = input
-rotary2PinA.pull = down
-
-rotary2PinB = pin13
-rotary2PinB.direction = input
-rotary2PinB.pull = down
-
-rotary2Value = rotary2PinB.value
-
-rotary3PinA = pin14
-rotary3PinA.direction = input
-rotary3PinA.pull = down
-
-rotary3PinB = pin15
-rotary3PinB.direction = input
-rotary3PinB.pull = down
-
-rotary3Value = rotary3PinB.value
-
-r1Push = pin16
-r1Push.direction = input
-r1Push.pull = down
-
-r2Push = pin17
-r2Push.direction = input
-r2Push.pull = down
-
-r3Push = pin18
-r3Push.direction = input
-r3Push.pull = down
-
+# Check for input in an infinite loop
 while True:
-    # Page Button
+    # Button 0 - Page Change
     if button0.value:
-        print('button 0')
         page += 1
         if page > totalpages:
             page = 1
         Button0(page)
-        time.sleep(0.1)
+        wait(0.1)
         
     # Buttons 1 - 9
     if button1.value:
         exec(f"Page{page}_Button1()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button2.value:
         exec(f"Page{page}_Button2()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button3.value:
         exec(f"Page{page}_Button3()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button4.value:
         exec(f"Page{page}_Button4()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button5.value:
         exec(f"Page{page}_Button5()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button6.value:
         exec(f"Page{page}_Button6()")
-        time.sleep(0.1)
+        wait(0.1)
 
     if button7.value:
         exec(f"Page{page}_Button7()")
-        time.sleep(0.1)
+        wait(0.1)
 
     if button8.value:
         exec(f"Page{page}_Button8()")
-        time.sleep(0.1)
+        wait(0.1)
         
     if button9.value:
         exec(f"Page{page}_Button9()")
-        time.sleep(0.1)
+        wait(0.1)
         
-    if r1Push.value:
+    if rotary1Button.value:
         exec(f"Page{page}_Rotary1_Push()")
-        time.sleep(0.1)
+        wait(0.1)
 
-    if r2Push.value:
+    if rotary2Button.value:
         exec(f"Page{page}_Rotary2_Push()")
-        time.sleep(0.1)
+        wait(0.1)
 
-    if r3Push.value:
+    if rotary3Button.value:
         exec(f"Page{page}_Rotary3_Push()")
-        time.sleep(0.1)
+        wait(0.1)
 
     # Rotaries
     if rotary1Value != rotary1PinB.value:

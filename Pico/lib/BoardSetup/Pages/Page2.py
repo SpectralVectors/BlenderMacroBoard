@@ -52,7 +52,7 @@ def Page2_Button9():
 def Page2_Rotary1_Left():
     print('Page 2 Rotary 1 Left')
     # Rotate Y 5 degrees
-    #kb.send(r, y, kb5, enter)
+    kb.send(g, x, kb1, enter)
 
 def Page2_Rotary1_Push():
     print('Page 2 Rotary 1 Push')
@@ -61,11 +61,11 @@ def Page2_Rotary1_Push():
 def Page2_Rotary1_Right():
     print('Page 2 Rotary 1 Right')
     # Rotate Y -5 degrees
-    #kb.send(r, y, minus, kb5, enter)
+    kb.send(g, x, minus, kb1, enter)
 
 def Page2_Rotary2_Left():
     print('Page 2 Rotary 2 Left')
-
+    kb.send(g, y, kb1, enter)
 
 def Page2_Rotary2_Push():
     print('Page 2 Rotary 2 Push')
@@ -73,11 +73,11 @@ def Page2_Rotary2_Push():
 
 def Page2_Rotary2_Right():
     print('Page 2 Rotary 2 Right')
-
+    kb.send(g, y, minus, kb1, enter)
 
 def Page2_Rotary3_Left():
     print('Page 2 Rotary 3 Left')
-
+    kb.send(g, z, kb1, enter)
 
 def Page2_Rotary3_Push():
     print('Page 2 Rotary 3 Push')
@@ -85,3 +85,4 @@ def Page2_Rotary3_Push():
 
 def Page2_Rotary3_Right():
     print('Page 2 Rotary 3 Right')
+    kb.send(g, z, minus, kb1, enter)
