@@ -10,79 +10,87 @@ Page2Name = 'GREASE PENCIL (Page 2)'
 ### Push Buttons
 
 def Page2_Button1():
-    print('Page 2 Button 1')
-    # Undo
-    kb.send(ctrl,z)
+    name = ''
+    print(f'Page 2 Button 1: {name}')
+    wait(0.1)
 
 def Page2_Button2():
-    print('Page 2 Button 2')
-    # Keyframe Y Rotation
-    kb.send(shift,ctrl,alt,y)
+    name = ''
+    print(f'Page 2 Button 2: {name}')
+    wait(0.1)
 
 def Page2_Button3():
-    print('Page 2 Button 3')
+    name = ''
+    print(f'Page 2 Button 3: {name}')
     wait(0.1)
 
 def Page2_Button4():
-    print('Page 2 Button 4')
+    name = ''
+    print(f'Page 2 Button 4: {name}')
     wait(0.1)
 
 def Page2_Button5():
-    print('Page 2 Button 5')
+    name = ''
+    print(f'Page 2 Button 5: {name}')
     wait(0.1)
 
 def Page2_Button6():
-    print('Page 2 Button 6')
+    name = ''
+    print(f'Page 2 Button 6: {name}')
     wait(0.1)
 
 def Page2_Button7():
-    print('Page 2 Button 7')
+    name = ''
+    print(f'Page 2 Button 7: {name}')
     wait(0.1)
 
 def Page2_Button8():
-    print('Page 2 Button 8')
+    name = ''
+    print(f'Page 2 Button 8: {name}')
     wait(0.1)
 
 def Page2_Button9():
-    print('Page 2 Button 9')
+    name = ''
+    print(f'Page 2 Button 9: {name}')
     wait(0.1)
 
 ### Rotaries
 
 def Page2_Rotary1_Left():
-    print('Page 2 Rotary 1 Left')
-    # Rotate Y 5 degrees
-    kb.send(g, x, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 1 Left: {name}')
 
 def Page2_Rotary1_Button():
-    print('Page 2 Rotary 1 Button')
+    name = ''
+    print(f'Page 2 Rotary 1 Button: {name}')
     wait(0.1)
 
 def Page2_Rotary1_Right():
-    print('Page 2 Rotary 1 Right')
-    # Rotate Y -5 degrees
-    kb.send(g, x, minus, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 1 Right: {name}')
 
 def Page2_Rotary2_Left():
-    print('Page 2 Rotary 2 Left')
-    kb.send(g, y, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 2 Left: {name}')
 
 def Page2_Rotary2_Button():
-    print('Page 2 Rotary 2 Button')
+    name = ''
+    print(f'Page 2 Rotary 2 Button: {name}')
     wait(0.1)
 
 def Page2_Rotary2_Right():
-    print('Page 2 Rotary 2 Right')
-    kb.send(g, y, minus, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 2 Right: {name}')
 
 def Page2_Rotary3_Left():
-    print('Page 2 Rotary 3 Left')
-    kb.send(g, z, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 3 Left: {name}')
 
 def Page2_Rotary3_Button():
-    print('Page 2 Rotary 3 Button')
+    name = ''
+    print(f'Page 2 Rotary 3 Button: {name}')
     wait(0.1)
 
 def Page2_Rotary3_Right():
-    print('Page 2 Rotary 3 Right')
-    kb.send(g, z, minus, kb1, enter)
+    name = ''
+    print(f'Page 2 Rotary 3 Right: {name}')

@@ -10,75 +10,88 @@ Page4Name = 'VSE (Page 4)'
 ### Push Buttons
 
 def Page4_Button1():
-    print('Page 4 Button 1')
+    name = ''
+    print(f'Page 4 Button 1: {name}')
     wait(0.1)
 
 def Page4_Button2():
-    print('Page 4 Button 2')
+    name = ''
+    print(f'Page 4 Button 2: {name}')
     wait(0.1)
 
 def Page4_Button3():
-    print('Page 4 Button 3')
+    name = ''
+    print(f'Page 4 Button 3: {name}')
     wait(0.1)
 
 def Page4_Button4():
-    print('Page 4 Button 4')
+    name = ''
+    print(f'Page 4 Button 4: {name}')
     wait(0.1)
 
 def Page4_Button5():
-    print('Page 4 Button 5')
+    name = ''
+    print(f'Page 4 Button 5: {name}')
     wait(0.1)
 
 def Page4_Button6():
-    print('Page 4 Button 6')
+    name = ''
+    print(f'Page 4 Button 6: {name}')
     wait(0.1)
 
 def Page4_Button7():
-    print('Page 4 Button 7')
+    name = ''
+    print(f'Page 4 Button 7: {name}')
     wait(0.1)
 
 def Page4_Button8():
-    print('Page 4 Button 8')
+    name = ''
+    print(f'Page 4 Button 8: {name}')
     wait(0.1)
 
 def Page4_Button9():
-    print('Page 4 Button 9')
+    name = ''
+    print(f'Page 4 Button 9: {name}')
     wait(0.1)
 
 ### Rotaries
 
 def Page4_Rotary1_Left():
-    print('Page 4 Rotary 2 Left')
-
+    name = ''
+    print(f'Page 4 Rotary 1 Left: {name}')
 
 def Page4_Rotary1_Button():
-    print('Page 4 Rotary 2 Button')
+    name = ''
+    print(f'Page 4 Rotary 1 Button: {name}')
     wait(0.1)
 
 def Page4_Rotary1_Right():
-    print('Page 4 Rotary 1 Right')
-
+    name = ''
+    print(f'Page 4 Rotary 1 Right: {name}')
 
 def Page4_Rotary2_Left():
-    print('Page 4 Rotary 2 Left')
-
+    name = ''
+    print(f'Page 4 Rotary 2 Left: {name}')
 
 def Page4_Rotary2_Button():
-    print('Page 4 Rotary 2 Button')
+    name = ''
+    print(f'Page 4 Rotary 2 Button: {name}')
     wait(0.1)
 
 def Page4_Rotary2_Right():
-    print('Page 4 Rotary 2 Right')
-
+    name = ''
+    print(f'Page 4 Rotary 2 Right: {name}')
 
 def Page4_Rotary3_Left():
-    print('Page 4 Rotary 3 Left')
-
+    name = ''
+    print(f'Page 4 Rotary 3 Left: {name}')
 
 def Page4_Rotary3_Button():
-    print('Page 4 Rotary 3 Button')
+    name = ''
+    print(f'Page 4 Rotary 3 Button: {name}')
     wait(0.1)
 
 def Page4_Rotary3_Right():
-    print('Page 4 Rotary 3 Right')
+    name = ''
+    print(f'Page 4 Rotary 3 Right: {name}')
 

@@ -11,36 +11,52 @@ down = io.Pull.DOWN
 # Setting up the Pins
 if pins:
     for i in range(pins):
-        exec(f"pin{i} = io.DigitalInOut(board.GP{i})")
+        exec(f'''
+
+pin{i} = io.DigitalInOut(board.GP{i})
+
+''')
 
 # Setting up the Buttons
 if buttons:
     for i in range(buttons):
-        exec(f"button{i} = pin{button_pins[i]}")
-        exec(f"button{i}.direction = input")
-        exec(f"button{i}.pull = down")
+        exec(f'''
+
+button{i} = pin{button_pins[i]}
+button{i}.direction = input
+button{i}.pull = down
+
+''')
 
 # Setting up the Rotaries
 if rotaries:
     for i in range(rotaries):
-        exec(f"rotary{i+1}PinA = pin{rotary_pins[i+1][0]}")
-        exec(f"rotary{i+1}PinA.direction = input")
-        exec(f"rotary{i+1}PinA.pull = down")
+        exec(f'''
 
-        exec(f"rotary{i+1}PinB = pin{rotary_pins[i+1][1]}")
-        exec(f"rotary{i+1}PinB.direction = input")
-        exec(f"rotary{i+1}PinB.pull = down")
+rotary{i+1}PinA = pin{rotary_pins[i+1][0]}
+rotary{i+1}PinA.direction = input
+rotary{i+1}PinA.pull = down
 
-        exec(f"rotary{i+1}Value = rotary{i+1}PinB.value")
+rotary{i+1}PinB = pin{rotary_pins[i+1][1]}
+rotary{i+1}PinB.direction = input
+rotary{i+1}PinB.pull = down
 
-        exec(f"rotary{i+1}Button = pin{rotary_pins[i+1][2]}")
-        exec(f"rotary{i+1}Button.direction = input")
-        exec(f"rotary{i+1}Button.pull = down")
+rotary{i+1}Value = rotary{i+1}PinB.value
+
+rotary{i+1}Button = pin{rotary_pins[i+1][2]}
+rotary{i+1}Button.direction = input
+rotary{i+1}Button.pull = down
+
+''')
 
 # Setting up the Pots
 if pots:
     for i in range(pots):
-        exec(f"pot{i+1} = AnalogIn(board.A{i})")
+        exec(f'''
+
+pot{i+1} = AnalogIn(board.A{i})
+
+''')
 
 # Check for input in an infinite loop
 while True:

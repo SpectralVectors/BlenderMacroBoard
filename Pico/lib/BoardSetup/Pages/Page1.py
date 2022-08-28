@@ -10,89 +10,104 @@ Page1Name = 'GENERAL (Page 1)'
 ### Push Buttons
 
 def Page1_Button1():
+    name = 'Escape'
     kb.send(esc)
-    print('Page 1 Button 1')
+    print(f'Page 1 Button 1: {name}')
     wait(0.1)
 
 
 def Page1_Button2():
+    name = 'Undo'
     kb.send(ctrl,z)
-    print('Page 1 Button 2')
+    print(f'Page 1 Button 2: {name}')
     wait(0.1)
 
 def Page1_Button3():
+    name = 'Enter'
     kb.send(enter)
-    print('Page 1 Button 3')
+    print(f'Page 1 Button 3: {name}')
     wait(0.1)
 
 def Page1_Button4():
-    kb.send(shift,ctrl,alt,a)
+    name = 'Transform Script'
+    kb.send(shift, ctrl, alt, a)
     run_script('G:/lib/Scripts/ObjectTest.py')
-    print('Page 1 Button 4')
+    print(f'Page 1 Button 4: {name}')
     wait(0.1)
 
 def Page1_Button5():
-    print('Page 1 Button 5')
+    name = ''
+    print(f'Page 1 Button 5: {name}')
     wait(0.1)
 
 def Page1_Button6():
-    print('Page 1 Button 6')
+    name = ''
+    print(f'Page 1 Button 6: {name}')
     wait(0.1)
 
 def Page1_Button7():
-    print('Page 1 Button 7')
+    name = ''
+    print(f'Page 1 Button 7: {name}')
     wait(0.1)
 
 def Page1_Button8():
-    print('Page 1 Button 8')
+    name = ''
+    print(f'Page 1 Button 8: {name}')
     wait(0.1)
 
 def Page1_Button9():
-    print('Page 1 Button 9')
+    name = ''
+    print(f'Page 1 Button 9: {name}')
     wait(0.1)
 
 ### Rotaries
 
 def Page1_Rotary1_Left():
-    print('Page 1 Rotary 1 Left')
-    # Rotate X 5 degrees
+    name = 'Rotate X +5'
     kb.send(r, x, kb5, enter)
+    print(f'Page 1 Rotary 1 Left: {name}')
 
 def Page1_Rotary1_Button():
-    kb.send(shift,ctrl,alt,x)
-    print('Page 1 Rotary 1 Button')
+    name = 'Keyframe Rotation X'
+    kb.send(shift, ctrl, alt, x)
+    print(f'Page 1 Rotary 1 Button: {name}')
     wait(0.1)
 
 def Page1_Rotary1_Right():
-    print('Page 1 Rotary 1 Right')
-    # Rotate X -5 degrees
+    name = 'Rotate X -5'
     kb.send(r, x, minus, kb5, enter)
+    print(f'Page 1 Rotary 1 Right: {name}')
 
 def Page1_Rotary2_Left():
-    kb.send(r,y,kb5,enter)
-    print('Page 1 Rotary 2 Left')
-
+    name = 'Rotate Y +5'
+    kb.send(r, y, kb5, enter)
+    print(f'Page 1 Rotary 2 Left: {name}')
 
 def Page1_Rotary2_Button():
-    kb.send(shift,ctrl,alt,y)
-    print('Page 1 Rotary 2 Button')
+    name = 'Keyframe Rotation Y'
+    kb.send(shift, ctrl, alt, y)
+    print(f'Page 1 Rotary 2 Button: {name}')
     wait(0.1)
 
 def Page1_Rotary2_Right():
-    kb.send(r,y,minus,kb5,enter)
-    print('Page 1 Rotary 2 Right')
+    name = 'Rotate Y -5'
+    kb.send(r, y, minus, kb5, enter)
+    print(f'Page 1 Rotary 2 Right: {name}')
 
 
 def Page1_Rotary3_Left():
-    kb.send(r,z,kb5,enter)
-    print('Page 1 Rotary 3 Left')
+    name = 'Rotate Z +5'
+    kb.send(r, z, kb5, enter)
+    print(f'Page 1 Rotary 3 Left: {name}')
 
 
 def Page1_Rotary3_Button():
-    kb.send(shift,ctrl,alt,z)
-    print('Page 1 Rotary 3 Button')
+    name = 'Keyframe Rotation Z'
+    kb.send(shift, ctrl, alt, z)
+    print(f'Page 1 Rotary 3 Button: {name}')
     wait(0.1)
 
 def Page1_Rotary3_Right():
-    kb.send(r,z,minus,kb5,enter)
-    print('Page 1 Rotary 3 Right')
+    name = 'Rotate Z -5'
+    kb.send(r, z, minus, kb5, enter)
+    print(f'Page 1 Rotary 3 Right: {name}')
