@@ -12,7 +12,7 @@ The project runs on a Raspberry Pi Pico, a detailed build guide will come as the
 [KLE Layout Available Here](http://www.keyboard-layout-editor.com/##@_background_name=Steel%20brushed%20dark&style=background-image%2F:%20url('%2F%2Fbg%2F%2Fmetal%2F%2Firon%2F_texture1745.jpg')%2F%3B%3B&plate:true%3B&@_a:7&f:9&d:true%3B&=%3Ci%20class%2F='fa%20fa-power-off'%3E%3C%2F%2Fi%3E&_d:true%3B&=%3Ci%20class%2F='fa%20fa-refresh'%3E%3C%2F%2Fi%3E&=%3Ci%20class%2F='fa%20fa-files-o'%3E%3C%2F%2Fi%3E%3B&@=1&=2&=3%3B&@=4&=5&=6%3B&@=7&=8&=9%3B&@_a:5&d:true%3B&=%0A%3Ci%20class%2F='fa%20fa-refresh'%3E%3C%2F%2Fi%3E&_d:true%3B&=%0A%3Ci%20class%2F='fa%20fa-refresh'%3E%3C%2F%2Fi%3E&_d:true%3B&=%0A%3Ci%20class%2F='fa%20fa-refresh'%3E%3C%2F%2Fi%3E)
 
 ### Wiring
-_All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins. The toggle switch control is found in 'boot.py'_
+_All of the wiring directions assume the use of the default 'code.py' file above, you can, of course, change any of this in the 'code.py' file and assign any buttons to any pins._
 
 Buttons 0-9 are wired with pins 0-9 on the Pico on one contact, the other contact goes to VBUS.
 
@@ -49,7 +49,7 @@ If you wish to change/edit the functions of the board, you can do so anytime by 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
 
 ## Roadmap
-At the moment the barrier to entry is quite high, I don't want to invest time in creating beginner-friendly build and usage guides until all the features solidify, and I can already see a number of changes that I would make to the code, and the wiring of the device itself.
+At the moment the barrier to entry is quite high, I don't want to invest time in creating beginner-friendly build and usage guides until all the features solidify.
 
 This would make a slimmer build with a custom PCB to mount keyswitches and a Pico on, and it would tidy up the mess of wires currently needed to use the device. (So would using a key-matrix, see above point about changes!) And creating a custom PCB to mount an RP2040 to could open up the range of IO possibilities even further.
 
