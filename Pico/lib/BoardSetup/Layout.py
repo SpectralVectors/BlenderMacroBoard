@@ -57,15 +57,9 @@ pots = 0
 
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):
-    print("Button 0")
     # Enters Python Code
-    kb.send(shift,ctrl,alt,a)
     name = pages[str(page)]
-    wait(0.2)
-    text.write(f"bpy.context.scene.bmp.p = '{name}'")
-    kb.send(enter)
-    kb.send(enter)
-    kb.send(right,left)
+    command(f"bpy.context.scene.bmp.page = '{name}'")
 
 '''
 

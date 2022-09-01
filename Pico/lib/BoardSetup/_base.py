@@ -14,10 +14,15 @@ kb = Keyboard(usb_hid.devices)
 text = KeyboardLayoutUS(kb)
 mouse = Mouse(usb_hid.devices)
 
-# This is a helper function to make running scripts only a single line
+# Helper function to make running scripts only a single line
 def run_script(filepath):
     kb.send(shift,ctrl,alt,a)
-    text.write(str(f"exec(open('{filepath}').read())"))
-    kb.send(enter)
-    kb.send(enter)
+    wait(0.1)
+    print(f"exec(open('{filepath}').read())")
 
+# Helper function to allow running commands in the background
+def command(command):
+    kb.send(shift,ctrl,alt,a)
+    wait(0.1)
+    print(f"import bpy;{command}")
+    kb.send(left,right)

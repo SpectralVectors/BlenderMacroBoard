@@ -30,13 +30,15 @@ def Page1_Button3():
 
 def Page1_Button4():
     name = 'Transform Script'
-    kb.send(shift, ctrl, alt, a)
     run_script('G:/lib/Scripts/ObjectTest.py')
     print(f'Page 1 Button 4: {name}')
     wait(0.1)
 
 def Page1_Button5():
     name = ''
+    kb.send(shift, r)
+    kb.send(ctrl, r)
+    kb.send(enter)
     print(f'Page 1 Button 5: {name}')
     wait(0.1)
 
@@ -69,9 +71,7 @@ def Page1_Rotary1_Left():
 
 def Page1_Rotary1_Button():
     name = 'Keyframe Rotation X'
-    kb.send(shift, ctrl, alt, x)
-    print(f'Page 1 Rotary 1 Button: {name}')
-    wait(0.1)
+    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=0, frame=bpy.data.scenes['Scene'].frame_current)")
 
 def Page1_Rotary1_Right():
     name = 'Rotate X -5'
@@ -85,9 +85,7 @@ def Page1_Rotary2_Left():
 
 def Page1_Rotary2_Button():
     name = 'Keyframe Rotation Y'
-    kb.send(shift, ctrl, alt, y)
-    print(f'Page 1 Rotary 2 Button: {name}')
-    wait(0.1)
+    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=1, frame=bpy.data.scenes['Scene'].frame_current)")
 
 def Page1_Rotary2_Right():
     name = 'Rotate Y -5'
@@ -103,9 +101,7 @@ def Page1_Rotary3_Left():
 
 def Page1_Rotary3_Button():
     name = 'Keyframe Rotation Z'
-    kb.send(shift, ctrl, alt, z)
-    print(f'Page 1 Rotary 3 Button: {name}')
-    wait(0.1)
+    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=2, frame=bpy.data.scenes['Scene'].frame_current)")
 
 def Page1_Rotary3_Right():
     name = 'Rotate Z -5'
