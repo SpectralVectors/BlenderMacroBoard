@@ -32,8 +32,6 @@ Rotary 3B - Pin 15
 
 If your rotaries have push button functionality, they can be wired the same way as Buttons 0-9.
 
-A toggle switch must be wired with one contact going to Pin 22 on the Pico, and the other contact going to VBUS. This will control the 'write' mode that the Pico will boot into, one way will allow your PC to write to the Pico's memory, but prevent the Pico from writing to its own internal memory, and the other way will prevent your PC from writing to the Pico's memory, but will allow the Pico to write to itself.
-
 Finally, a Reset button is added, with one contact going to the 'Run' pin on the Pico, and the other contact going to ground. This is necessary to 'Refresh' the Pico, as well as to allow the user to instantly reboot to change 'write' modes.
 
 ### Software
@@ -41,7 +39,7 @@ After wiring your Pico, before you connect it to your PC, hold down the 'BOOTSEL
 
 You may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
 
-Then, eject your Pico, disconnect it, hold down 'BOOTSEL' again and reconnect it to your PC. This time you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
+Then, you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
 
 ### Functionality
 Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then you can start experimenting with the rotary encoders, each is set to rotate and keyframe one axis of the active object.
