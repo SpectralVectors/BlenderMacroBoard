@@ -1,10 +1,10 @@
 bl_info = {
     "name": "BlenderMacroBoard",
     "author": "Spectral Vectors",
-    "version": (0, 0, 2),
+    "version": (0, 0, 3),
     "blender": (2, 90, 0),
     "location": "Edit > Preferences > Addons > BlenderMacroBoard",
-    "description": "A tool to configure your BlenderMacroBoard",
+    "description": "Syncs your Board with Blender",
     "warning": "",
     "doc_url": "",
     "category": "Addons",
@@ -30,21 +30,6 @@ try:
     import serial
 except:
     install_serial()
-
-class SerialCommand(bpy.types.Operator):
-    """Execute a command from serial"""
-    
-    bl_idname = "addon.serial_command"
-    bl_label = "Serial Command"
-
-    def execute(self, context):
-
-        ser = serial.Serial("COM4")
-        text = ser.readline().decode('utf-8')
-        exec(text)
-        ser.close()
-
-        return {'FINISHED'}
 
 class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
@@ -108,10 +93,10 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         description='The operator assigned to Rotary 1 - [Left Turn] on this page'
     )
 
-    R1Push: bpy.props.StringProperty(
-        name='Rotary 1 Push Operator',
-        default='[R1Push]',
-        description='The operator assigned to Rotary 1 - [Push] on this page'
+    R1Button: bpy.props.StringProperty(
+        name='Rotary 1 Button Operator',
+        default='[R1Button]',
+        description='The operator assigned to Rotary 1 - [Button] on this page'
     )
 
     R1Right: bpy.props.StringProperty(
@@ -126,10 +111,10 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         description='The operator assigned to Rotary 2 - [Left Turn] on this page'
     )
 
-    R2Push: bpy.props.StringProperty(
-        name='Rotary 2 Push Operator',
-        default='[R2Push]',
-        description='The operator assigned to Rotary 2 - [Push] on this page'
+    R2Button: bpy.props.StringProperty(
+        name='Rotary 2 Button Operator',
+        default='[R2Button]',
+        description='The operator assigned to Rotary 2 - [Button] on this page'
     )
 
     R2Right: bpy.props.StringProperty(
@@ -144,10 +129,10 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         description='The operator assigned to Rotary 3 - [Left Turn] on this page'
     )
 
-    R3Push: bpy.props.StringProperty(
-        name='Rotary 3 Push Operator',
-        default='[R3Push]',
-        description='The operator assigned to Rotary 3 - [Push] on this page'
+    R3Button: bpy.props.StringProperty(
+        name='Rotary 3 Button Operator',
+        default='[R3Button]',
+        description='The operator assigned to Rotary 3 - [Button] on this page'
     )
 
     R3Right: bpy.props.StringProperty(
@@ -156,48 +141,66 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         description='The operator assigned to Rotary 3 - [Right Turn] on this page'
     )
 
-    page : bpy.props.StringProperty(
+    Page : bpy.props.StringProperty(
         name='Macro Page',
         default='GENERAL (Page 1)',
         description='The current macro page',
     )
 
-class PageNotification(bpy.types.Menu):
-    bl_label = 'Current Page'
+    Port : bpy.props.StringProperty(
+        name='USB Port',
+        default='COM4',
+        description='The port used by the board for serial communication, often: Win: COM4, Linux: ttyACM0, Mac: /dev/tty.usbmodem...',
+    )
 
-    def draw(self, context):
-        layout = self.layout
+class SerialCommand(bpy.types.Operator):
+    """Execute a command from serial"""
+    
+    bl_idname = "addon.serial_command"
+    bl_label = "Serial Command"
 
-    def menu_draw(self, context):
+    def execute(self, context):
 
         bmp = bpy.context.scene.bmp
-        page = bmp.page
-        if page == 'GENERAL (Page 1)': 
-            icon='FILE_3D'
-        elif page == 'GREASE PENCIL (Page 2)':
-            icon='GPBRUSH_PEN'
-        elif page == 'SCULPT (Page 3)':
-            icon='BRUSH_SMEAR'
-        elif page == 'VSE (Page 4)':
-            icon='VIEW_CAMERA'
-        else:
-            page = 'GENERAL (Page 1)'
-            icon='FILE_3D'
+        ser = serial.Serial(bmp.Port)
+        text = ser.readline().decode('utf-8')
+        exec(text)
+        ser.close()
 
-        row = self.layout.row(align=True)
-        row.label(icon=icon)
-        row.label(text=page)
+        return {'FINISHED'}
+
+class KeyLayoutViewer(bpy.types.Operator):
+    bl_idname = "addon.key_layout_viewer"
+    bl_label = "Current Page:"
+
+    def execute(self, context):
+        print('Viewing Key Layout')
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self, width=480)
+
+    def draw(self, context):
         
-
-class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
-    bl_idname = __name__
-
-    def draw(self, context):
-
         bmp = bpy.context.scene.bmp
 
         layout = self.layout
-        box=layout.box()        
+
+        box = layout.box()
+        box.label(text=bmp.Page)
+        box=layout.box()
+        box.label(text='Globals:', icon='WORLD')
+        column = box.column(align=True)
+        row = column.row(align=True)
+        box = row.box()
+        box.label(text='Reset Board', icon='QUIT')
+        box = row.box()
+        box.label(text='Scrub Timeline', icon='FILE_REFRESH')
+        box = row.box()
+        box.label(text='Page Change', icon='DUPLICATE')
+
+        box=layout.box()
+        box.label(text='Buttons:', icon='FILE_VOLUME')
         column = box.column(align=True)
         row = column.row(align=True)
         box = row.box()
@@ -220,38 +223,82 @@ class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
         box.label(text=bmp.Key8)
         box = row.box()
         box.label(text=bmp.Key9)
-        column.label(text='Rotary 1:', icon='FILE_REFRESH')
-        row = column.row(align=True)
-        box = row.box()
-        box.label(text=bmp.R1Left, icon='LOOP_BACK')
-        box = row.box()
-        box.label(text=bmp.R1Push, icon='SORT_ASC')
-        box = row.box()
-        box.label(text=bmp.R1Right, icon='LOOP_FORWARDS')
-        column.label(text='Rotary 2:', icon='FILE_REFRESH')
-        row = column.row(align=True)
-        box = row.box()
-        box.label(text=bmp.R2Left, icon='LOOP_BACK')
-        box = row.box()
-        box.label(text=bmp.R2Push, icon='SORT_ASC')
-        box = row.box()
-        box.label(text=bmp.R2Right, icon='LOOP_FORWARDS')
-        column.label(text='Rotary 3:', icon='FILE_REFRESH')
-        row = column.row(align=True)
-        box = row.box()
-        box.label(text=bmp.R3Left, icon='LOOP_BACK')
-        box = row.box()
-        box.label(text=bmp.R3Push, icon='SORT_ASC')
-        box = row.box()
-        box.label(text=bmp.R3Right, icon='LOOP_FORWARDS')
 
+        column.label(text='Rotary Encoders:', icon='FILE_REFRESH')
+        row = column.row()
+        column = row.column(align=True)
+        column.label(text='Rotary 1:')
+        box = column.box()
+        box.label(text=bmp.R1Left, icon='LOOP_BACK')
+        box = column.box()
+        box.label(text=bmp.R1Right, icon='LOOP_FORWARDS')
+        box = column.box()
+        box.label(text=bmp.R1Button, icon='SORT_ASC')
+
+        column = row.column(align=True)
+        column.label(text='Rotary 2:')
+        box = column.box()
+        box.label(text=bmp.R2Left, icon='LOOP_BACK')
+        box = column.box()
+        box.label(text=bmp.R2Right, icon='LOOP_FORWARDS')
+        box = column.box()
+        box.label(text=bmp.R2Button, icon='SORT_ASC')
+
+        column = row.column(align=True)
+        column.label(text='Rotary 3:')
+        box = column.box()
+        box.label(text=bmp.R3Left, icon='LOOP_BACK')
+        box = column.box()
+        box.label(text=bmp.R3Right, icon='LOOP_FORWARDS')
+        box = column.box()
+        box.label(text=bmp.R3Button, icon='SORT_ASC')
+
+
+class WM_MT_PageNotification(bpy.types.Menu):
+    bl_label = 'Current Page'
+
+    def draw(self, context):
+        layout = self.layout
+
+    def menu_draw(self, context):
+
+        bmp = bpy.context.scene.bmp
+        page = bmp.Page
+        if page == 'GENERAL (Page 1)': 
+            icon='FILE_3D'
+        elif page == 'GREASE PENCIL (Page 2)':
+            icon='GPBRUSH_PEN'
+        elif page == 'SCULPT (Page 3)':
+            icon='BRUSH_SMEAR'
+        elif page == 'VSE (Page 4)':
+            icon='VIEW_CAMERA'
+        else:
+            page = 'GENERAL (Page 1)'
+            icon='FILE_3D'
+
+        row = self.layout.row(align=True)
+        row.operator('addon.key_layout_viewer', text=page, icon=icon)
+        
+
+class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
+    bl_idname = __name__
+
+    def draw(self, context):
+
+        bmp = bpy.context.scene.bmp
+
+        layout = self.layout
+        box = layout.box()
+        row = box.row()
+        row.prop(bmp, 'Port')
 
 
 classes = [
     BlenderMacroBoardProperties,
     BlenderMacroBoardPreferences,
-    PageNotification,
+    WM_MT_PageNotification,
     SerialCommand,
+    KeyLayoutViewer,
 ]
 
 def register():
@@ -259,12 +306,12 @@ def register():
         bpy.utils.register_class(cls)
 
     bpy.types.Scene.bmp = bpy.props.PointerProperty(type=BlenderMacroBoardProperties)
-    bpy.types.STATUSBAR_HT_header.append(PageNotification.menu_draw)
-    #bpy.types.TOPBAR_MT_editor_menus.prepend(PageNotification.menu_draw)
+    bpy.types.STATUSBAR_HT_header.append(WM_MT_PageNotification.menu_draw)
+    #bpy.types.TOPBAR_MT_editor_menus.prepend(WM_MT_PageNotification.menu_draw)
 
 def unregister():
-    bpy.types.STATUSBAR_HT_header.remove(PageNotification.menu_draw)
-    #bpy.types.TOPBAR_MT_editor_menus.remove(PageNotification.menu_draw)
+    bpy.types.STATUSBAR_HT_header.remove(WM_MT_PageNotification.menu_draw)
+    #bpy.types.TOPBAR_MT_editor_menus.remove(WM_MT_PageNotification.menu_draw)
 
     for cls in classes:
         bpy.utils.unregister_class(cls)
