@@ -20,13 +20,13 @@ pages = {
 }
 
 # This is the total number of pins used by the buttons and rotaries
-pins = 19
+pins = 22
 
 # This is the total number of buttons, including the Page Button, which is Button 0
 buttons = 10
 
 # Button Pins are setup as:
-# Button Number : GPIO Pin Number
+# Button : GPIO Pin
 button_pins = {
     0:0,
     1:1,
@@ -41,12 +41,13 @@ button_pins = {
     }
 
 # The total number of rotary encoders on your board
-rotaries = 3
+rotaries = 4
 
 # The pins used by the rotary encoders, the first two must be consecutive GPIO pins
 # The pins are setup as:
 # (Rotary Pin A, Rotary Pin B, Rotary Button Pin)
 rotary_pins = {
+    0:(20,21,19),
     1:(10,11,16),
     2:(12,13,17),
     3:(14,15,18),
@@ -57,52 +58,29 @@ pots = 0
 
 # This button is dedicated to changing pages/layers and should not be changed
 def Button0(page):
-    # Enters Python Code
+
     name = pages[str(page)]
-    command(f"bpy.context.scene.bmp.page = '{name}'")
 
-'''
+    B1 = eval(f"Page{page}_Button1_Name")
+    B2 = eval(f"Page{page}_Button2_Name")
+    B3 = eval(f"Page{page}_Button3_Name")
+    B4 = eval(f"Page{page}_Button4_Name")
+    B5 = eval(f"Page{page}_Button5_Name")
+    B6 = eval(f"Page{page}_Button6_Name")
+    B7 = eval(f"Page{page}_Button7_Name")
+    B8 = eval(f"Page{page}_Button8_Name")
+    B9 = eval(f"Page{page}_Button9_Name")
 
-Original Keycode list: 
-https://docs.circuitpython.org/projects/hid/en/latest/_modules/adafruit_hid/keycode.html#Keycode
+    R1Left = eval(f"Page{page}_Rotary1_Left_Name")
+    R1Right = eval(f"Page{page}_Rotary1_Right_Name")
+    R1Button = eval(f"Page{page}_Rotary1_Button_Name")
 
-Shortcode list (eg: instead of writing: Keycode.A, you can just write: a):
+    R2Left = eval(f"Page{page}_Rotary2_Left_Name")
+    R2Right = eval(f"Page{page}_Rotary2_Right_Name")
+    R2Button = eval(f"Page{page}_Rotary2_Button_Name")
 
-Letters: 
-a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+    R3Left = eval(f"Page{page}_Rotary3_Left_Name")
+    R3Right = eval(f"Page{page}_Rotary3_Right_Name")
+    R3Button = eval(f"Page{page}_Rotary3_Button_Name")
 
-Numbers(At the top of the keyboard, NOT the Numpad): 
-kb1, kb2, kb3, kb4, kb5, kb6, kb7, kb8, kb9, kb0
-
-Actions: 
-enter, esc, backspace, tab, space, caps_lock, insert, delete, home, end, page_up,
-page_down, print_screen, scroll_lock, pause
-
-Modifiers:
-shift, ctrl, alt, os, right_shift, right_ctrl, right_alt, right_os
-
-Arrows:
-right, up, left, down
-
-Symbols: 
-minus, equals, left_bracket, right_bracket, backslash, pound, hash, semicolon, 
-quote, grave_accent, comma, period, dot, slash
-
-Function Keys: 
-f1, f2, f3, f4, f5,f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, 
-f19, f20, f21, f22, f23, f24
-
-Numpad:
-np1, np2, np3, np4, np5, np6, np7, np8, np9, np0, np_numlock, np_slash, np_star,
-np_minus, np_plus, np_enter, np_dot
-
-The Keyboard Layout, for reference:
-
-    |0|
-|1|2|3|
-|4|5|6|
-|7|8|9|
-|R|R|R|
-
-'''
-    
+    command(f'''p=bpy.context.scene.bmp;p.Page = '{name}';p.Key1='{B1}';p.Key2='{B2}';p.Key3='{B3}';p.Key4='{B4}';p.Key5='{B5}';p.Key6='{B6}';p.Key7='{B7}';p.Key8='{B8}';p.Key9='{B9}';p.R1Left='{R1Left}';p.R1Right='{R1Right}';p.R1Button='{R1Button}';p.R2Left='{R2Left}';p.R2Right='{R2Right}';p.R2Button='{R2Button}';p.R3Left='{R3Left}';p.R3Right='{R3Right}';p.R3Button='{R3Button}' ''')

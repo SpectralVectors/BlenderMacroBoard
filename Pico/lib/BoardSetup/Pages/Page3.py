@@ -7,91 +7,106 @@ from .._base import *
 # Enter a name for this page
 Page3Name = 'SCULPT (Page 3)'
 
-### Push Buttons
+###############
+### Buttons ###
+###############
 
+# Button 1
+Page3_Button1_Name = ''
 def Page3_Button1():
-    name = ''
-    print(f'Page 3 Button 1: {name}')
+    print('Page 3 Button 1')
     wait(0.1)
 
+# Button 2
+Page3_Button2_Name = ''
 def Page3_Button2():
-    name = ''
-    print(f'Page 3 Button 2: {name}')
+    print('Page 3 Button 2')
     wait(0.1)
 
+# Button 3
+Page3_Button3_Name = ''
 def Page3_Button3():
-    name = ''
-    print(f'Page 3 Button 3: {name}')
+    print('Page 3 Button 3')
     wait(0.1)
 
+# Button 4
+Page3_Button4_Name = ''
 def Page3_Button4():
-    name = ''
-    print(f'Page 3 Button 4: {name}')
+    print('Page 3 Button 4')
     wait(0.1)
 
+# Button 5
+Page3_Button5_Name = ''
 def Page3_Button5():
-    name = ''
-    print(f'Page 3 Button 5: {name}')
+    print('Page 3 Button 5')
     wait(0.1)
 
+# Button 6
+Page3_Button6_Name = ''
 def Page3_Button6():
-    name = ''
-    print(f'Page 3 Button 6: {name}')
+    print('Page 3 Button 6')
     wait(0.1)
 
+# Button 7
+Page3_Button7_Name = ''
 def Page3_Button7():
-    name = ''
-    print(f'Page 3 Button 7: {name}')
+    print('Page 3 Button 7')
     wait(0.1)
 
+# Button 8
+Page3_Button8_Name = ''
 def Page3_Button8():
-    name = ''
-    print(f'Page 3 Button 8: {name}')
+    print('Page 3 Button 8')
     wait(0.1)
 
+# Button 9
+Page3_Button9_Name = ''
 def Page3_Button9():
-    name = ''
-    print(f'Page 3 Button 9: {name}')
+    print('Page 3 Button 9')
     wait(0.1)
 
-### Rotaries
 
+################
+### Rotaries ###
+################
+
+# Rotary 1
+Page3_Rotary1_Left_Name = ''
 def Page3_Rotary1_Left():
-    name = ''
-    print(f'Page 3 Rotary 1 Left: {name}')
+    print('Page 3 Rotary 1 Left')
 
-def Page3_Rotary1_Button():
-    name = ''
-    print(f'Page 3 Rotary 1 Button: {name}')
-    wait(0.1)
-
+Page3_Rotary1_Right_Name = ''
 def Page3_Rotary1_Right():
-    name = ''
-    print(f'Page 3 Rotary 1 Right: {name}')
+    print('Page 3 Rotary 1 Right')
 
+Page3_Rotary1_Button_Name = ''
+def Page3_Rotary1_Button():
+    print('Page 3 Rotary 1 Button')
+    wait(0.1)
+
+# Rotary 2
+Page3_Rotary2_Left_Name = ''
 def Page3_Rotary2_Left():
-    name = ''
-    print(f'Page 3 Rotary 2 Left: {name}')
+    print('Page 3 Rotary 2 Left')
 
-def Page3_Rotary2_Button():
-    name = ''
-    print(f'Page 3 Rotary 2 Button: {name}')
-    wait(0.1)
-
+Page3_Rotary2_Right_Name = ''
 def Page3_Rotary2_Right():
-    name = ''
-    print(f'Page 3 Rotary 2 Right: {name}')
+    print('Page 3 Rotary 2 Right')
 
-def Page3_Rotary3_Left():
-    name = ''
-    print(f'Page 3 Rotary 3 Left: {name}')
-
-def Page3_Rotary3_Button():
-    name = ''
-    print(f'Page 3 Rotary 3 Button: {name}')
+Page3_Rotary2_Button_Name = ''
+def Page3_Rotary2_Button():
+    print('Page 3 Rotary 2 Button')
     wait(0.1)
 
-def Page3_Rotary3_Right():
-    name = ''
-    print(f'Page 3 Rotary 3 Right: {name}')
+# Rotary 3
+Page3_Rotary3_Left_Name = 'Remesh Voxel Size Down'
+def Page3_Rotary3_Left():
+    command('bpy.context.object.data.remesh_voxel_size -= 0.01')
 
+Page3_Rotary3_Right_Name = 'Remesh Voxel Size Up'
+def Page3_Rotary3_Right():
+    command('bpy.context.object.data.remesh_voxel_size += 0.01')
+
+Page3_Rotary3_Button_Name = 'Voxel Remesh'
+def Page3_Rotary3_Button():
+    command('bpy.ops.object.voxel_remesh()')

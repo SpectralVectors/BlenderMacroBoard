@@ -33,19 +33,19 @@ if rotaries:
     for i in range(rotaries):
         exec(f'''
 
-rotary{i+1}PinA = pin{rotary_pins[i+1][0]}
-rotary{i+1}PinA.direction = input
-rotary{i+1}PinA.pull = down
+rotary{i}PinA = pin{rotary_pins[i][0]}
+rotary{i}PinA.direction = input
+rotary{i}PinA.pull = down
 
-rotary{i+1}PinB = pin{rotary_pins[i+1][1]}
-rotary{i+1}PinB.direction = input
-rotary{i+1}PinB.pull = down
+rotary{i}PinB = pin{rotary_pins[i][1]}
+rotary{i}PinB.direction = input
+rotary{i}PinB.pull = down
 
-rotary{i+1}Value = rotary{i+1}PinB.value
+rotary{i}Value = rotary{i}PinB.value
 
-rotary{i+1}Button = pin{rotary_pins[i+1][2]}
-rotary{i+1}Button.direction = input
-rotary{i+1}Button.pull = down
+rotary{i}Button = pin{rotary_pins[i][2]}
+rotary{i}Button.direction = input
+rotary{i}Button.pull = down
 
 ''')
 
@@ -105,6 +105,10 @@ while True:
         exec(f"Page{page}_Button9()")
         wait(0.1)
 
+    if rotary0Button.value:
+        kb.send(space)
+        wait(0.2)
+
     if rotary1Button.value:
         exec(f"Page{page}_Rotary1_Button()")
         wait(0.1)
@@ -118,6 +122,16 @@ while True:
         wait(0.1)
 
     # Rotaries
+    # Rotary 0 is set to scrub the timeline on all pages
+    # with the button set to Play/Stop
+    if rotary0Value != rotary0PinB.value:
+        if not rotary0PinB.value:
+            if not rotary0PinA.value:
+                kb.send(right)
+            else:
+                kb.send(left)                
+        rotary0Value = rotary0PinB.value
+
     if rotary1Value != rotary1PinB.value:
         if not rotary1PinB.value:
             if not rotary1PinA.value:
