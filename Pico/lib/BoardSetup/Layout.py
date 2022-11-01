@@ -20,7 +20,7 @@ pages = {
 }
 
 # This is the total number of pins used by the buttons and rotaries
-pins = 22
+pins = 29
 
 # This is the total number of buttons, including the Page Button, which is Button 0
 buttons = 10
@@ -29,14 +29,14 @@ buttons = 10
 # Button : GPIO Pin
 button_pins = {
     0:0,
-    1:1,
-    2:2,
-    3:3,
-    4:4,
-    5:5,
-    6:6,
-    7:7,
-    8:8,
+    1:22,
+    2:5,
+    3:7,
+    4:21,
+    5:6,
+    6:8,
+    7:20,
+    8:19,
     9:9,
     }
 
@@ -47,10 +47,10 @@ rotaries = 4
 # The pins are setup as:
 # (Rotary Pin A, Rotary Pin B, Rotary Button Pin)
 rotary_pins = {
-    0:(20,21,19),
-    1:(10,11,16),
-    2:(12,13,17),
-    3:(14,15,18),
+    0:(26,27,28),
+    1:(17,16,18),
+    2:(13,12,11),
+    3:(14,15,10),
     }
 
 # The total number of potentiometers

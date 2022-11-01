@@ -107,6 +107,7 @@ while True:
 
     if rotary0Button.value:
         kb.send(space)
+        print('space')
         wait(0.2)
 
     if rotary1Button.value:
@@ -128,8 +129,12 @@ while True:
         if not rotary0PinB.value:
             if not rotary0PinA.value:
                 kb.send(right)
+                print('right')
+                wait(0.1)
             else:
-                kb.send(left)                
+                kb.send(left)
+                print('left')
+                wait(0.1)
         rotary0Value = rotary0PinB.value
 
     if rotary1Value != rotary1PinB.value:
