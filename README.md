@@ -3,14 +3,21 @@ _Work in Progress - Alpha Build_
 
 An open-source, customizable hardware control surface for Blender.
 
-## How to Setup & Use
-The project runs on a Raspberry Pi Pico, a detailed build guide will come as the project continues. For now, this guide represents how to build and use the alpha prototype, and is recommended only for users familiar with microcontroller wiring and programming. This will change as the design details and features solidify.
+## Using the Board
+There are two important settings that you must set manually, based on your setup:
 
+1 - The Pico will show up as a USB stick on your system, allowing you to open and edit the files while you use the device. The location of the Scripts folder is currently hard-coded into the script. For me, it is the __G:/__ drive, for most Windows users it will likely be __D:/__ or __E:/__.
+
+2 - The same is true for COM port that allows Blender to communicate with the board. After installing the Blender Addon, open up the Addon preferences, and set __USB Port__, default is __COM4__, for most Windows users it will be __COM3__, __COM4__, or __COM5__
+
+If you do not have these set correctly you will see errors in Blender when you try to use the board.
+
+## About
 ### Layout
 ![](/images/BlenderMacroBoardPCBPreview.png)
 
 ### Software
-You may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
+If you are building from scratch, you may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
 
 Then, you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
 
