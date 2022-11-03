@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name blender_logo_kit)(type KiCad)(uri C:/Users/User/Downloads/blender_logo_kit)(options "")(descr ""))
+  (lib (name MCU_RaspberryPi_and_Boards)(type KiCad)(uri C:/Users/User/Downloads/RP_Silicon_KiCad-main/KiCadLibraries/MCU_RaspberryPi_and_Boards.pretty)(options "")(descr ""))
+)
