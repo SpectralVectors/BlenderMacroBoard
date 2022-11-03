@@ -30,6 +30,29 @@ These files will allow you to see how the default presets are created, and how t
 
 ### Folder Structure
 ![](/images/BlenderBoardFolderStructure.png)
+
+__Raspberry Pi Pico__ is the root folder of the Pico.
+
+__Code__ is the _code.py_ file that defines the behavior of the Pico. It is set up so that it will load variables from the __Layout__ and preset __Page__ files. Located in the root folder of the Pico.
+
+__Lib__ is a folder that contains all of the user editable files, and some system files.
+
+__adafruit_hid__ is a folder that contains precompiled mpy binaries that cannot be edited by the user. _(You can make any changes you need to this library before flashing it to the Pico)_
+
+__Scripts__ is a folder that contains individual script files that can be run from a button press. _ObjectTest.py_ can be used as an example for how to write your own scripts.
+
+__BoardSetup__ is the folder that contains most of the user-editable files:
+
+__Layout__ can be updated if you want to add more preset Pages, or if you have created a custom build _(eg. different number of keys, rotaries, potentiometers etc.)_
+
+__base__ is a system file that imports libraries and defines the _'run_script'_ and _'command'_ functions.
+
+__shortcodes__ is a system file that shortens the Adafruit keycodes for convenience.
+
+__Pages__ is a folder containing all the user preset Pages.
+
+__Page1__ is a preset file. Here you can define what function each key, rotary turn and press perform, and what name will be displayed in the Addon in Blender. You can have as many pages as you want, but you will have to update your __Layout__ file to reflect any additional pages.
+
 The red arrows point to files that the user may wish to edit, the Preset pages, the Scripts, and the Layout (for adding extra pages and more advanced functions).
 The rest can be regarded as 'system' files and will not need to be edited by 99% of users.
 
