@@ -43,7 +43,7 @@ __Code__ is the _code.py_ file that defines the behavior of the Pico. It is set 
 
 __Lib__ is a folder that contains all of the user editable files, and some system files.
 
-__adafruit_hid__ is a folder that contains precompiled mpy binaries that cannot be edited by the user. _(You can make any changes you need to this library before flashing it to the Pico)_
+__adafruit_hid__ is a folder that contains precompiled mpy binaries that cannot be edited by the user.
 
 __Scripts__ is a folder that contains individual script files that can be run from a button press. _ObjectTest.py_ can be used as an example for how to write your own scripts.
 
