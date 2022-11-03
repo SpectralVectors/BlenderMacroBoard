@@ -28,9 +28,11 @@ You can edit the files on the device and save them, reset the board if it does n
 Be aware that having code open in Thonny will prevent communication between Blender and the board, so make sure to close Thonny after running the updated code, otherwise Blender will give errors.
 
 ### Editing
-If you wish to change/edit the functions of the board, you can do so anytime by opening the board like a USB stick, navigating to the 'lib/BoardSetup/' folder and editing the 'Layout.py' file, or by going directly into the 'Pages' folder and customizing each button on each page to send: single keypresses, key combos, text, scripts, mouse moves, clicks etc.
+If you wish to change/edit the functions of the board, you can do so anytime by opening the board like a USB stick, navigating to the 'Pages' folder and customizing each button on each page to send: single keypresses, key combos, text, scripts, mouse moves, clicks etc.
 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
+
+You can add more pages, but you will have to update __Layout.py__ to reflect those changes.
 
 ### Folder Structure
 ![](/images/BlenderBoardFolderStructure.png)
