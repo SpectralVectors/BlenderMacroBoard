@@ -23,7 +23,7 @@ Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' 
 
 Then you can start experimenting with the keys and rotary encoders. Any key or encoder can be assigned to a single keypress, a key combination, a single line bpy command, a pre-written script stored on the device, a delay or some combination of all of the above.
 
-You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. __(Open __code.py__ in Thonny, and press Run)__
+You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. _(Open __code.py__ in Thonny, and press Run)_
 
 Be aware that having code open in Thonny will prevent communication between Blender and the board, so make sure to close Thonny after running the updated code, otherwise Blender will give errors.
 
