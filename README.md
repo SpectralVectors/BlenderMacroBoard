@@ -16,14 +16,14 @@ If you do not have these set correctly you will see errors in Blender when you t
 ### Layout
 ![](/images/BlenderMacroBoardPCBPreview.png)
 
-### Software
-If you are building from scratch, you may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
+### Setup
+Once you have assembled the board, connect it via USB. Open the board in your file explorer, and navigate to the __Scripts__ folder, ensure that the drive letter in the script matches the drive that your board is connected to, if it is not correct, update it and save the file.
 
-Then, you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
+Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then, in the addon preferences, set your COM port. Try COM3, COM4, or COM5, you will know it is working when the Page Change button starts to work.
+
+Then you can start experimenting with the keys and rotary encoders. You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. (Open __code.py__ in Thonny, and press Run)
 
 ### Functionality
-Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then you can start experimenting with the rotary encoders, each is set to rotate and keyframe one axis of the active object.
-
 If you wish to change/edit the functions of the board, you can do so anytime by opening the board like a USB stick, navigating to the 'lib/BoardSetup/' folder and editing the 'Layout.py' file, or by going directly into the 'Pages' folder and customizing each button on each page to send: single keypresses, key combos, text, scripts, mouse moves, clicks etc.
 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
@@ -55,6 +55,11 @@ __Page1__ is a preset file. Here you can define what function each key, rotary t
 
 The red arrows point to files that the user may wish to edit, the Preset pages, the Scripts, and the Layout (for adding extra pages and more advanced functions).
 The rest can be regarded as 'system' files and will not need to be edited by 99% of users.
+
+### Pico Prep (if you are building from scratch)
+You may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
+
+Then, you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
 
 ## Roadmap
 The design philosophy of the device is to change Blender as little as possible, make using the device as simple as pluggin in a keyboard, and not require remapping of keys/controls, or anything that could potentially create conflicts with Blender's keymap, future keymap additions, or any of the thousands of addons that come with their own custom keymaps.
