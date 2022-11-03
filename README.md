@@ -23,6 +23,11 @@ If you wish to change/edit the functions of the board, you can do so anytime by 
 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
 
+### Folder Structure
+![](/images/BlenderBoardFolderStructure.png)
+The red arrows point to files that the user may wish to edit, the Preset pages, the Scripts, and the Layout (for adding extra pages and more advanced functions).
+The rest can be regarded as 'system' files and will not need to be edited by 99% of users.
+
 ## Roadmap
 The design philosophy of the device is to change Blender as little as possible, make using the device as simple as pluggin in a keyboard, and not require remapping of keys/controls, or anything that could potentially create conflicts with Blender's keymap, future keymap additions, or any of the thousands of addons that come with their own custom keymaps.
 
