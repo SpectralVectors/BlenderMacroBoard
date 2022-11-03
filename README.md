@@ -19,11 +19,15 @@ If you do not have these set correctly you will see errors in Blender when you t
 ### Setup
 Once you have assembled the board, connect it via USB. Open the board in your file explorer, and navigate to the __Scripts__ folder, ensure that the drive letter in the script matches the drive that your board is connected to, if it is not correct, update it and save the file.
 
-Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then, in the addon preferences, set your COM port. Try COM3, COM4, or COM5, you will know it is working when the Page Change button starts to work.
+Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then, in the addon preferences, set your COM port. Try __COM3__, __COM4__, or __COM5__, you will know it is working when the Page Change button starts to work.
 
-Then you can start experimenting with the keys and rotary encoders. You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. (Open __code.py__ in Thonny, and press Run)
+Then you can start experimenting with the keys and rotary encoders. Any key or encoder can be assigned to a single keypress, a key combination, a single line bpy command, a pre-written script stored on the device, a delay or some combination of all of the above.
 
-### Functionality
+You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. __(Open __code.py__ in Thonny, and press Run)__
+
+Be aware that having code open in Thonny will prevent communication between Blender and the board, so make sure to close Thonny after running the updated code, otherwise Blender will give errors.
+
+### Editing
 If you wish to change/edit the functions of the board, you can do so anytime by opening the board like a USB stick, navigating to the 'lib/BoardSetup/' folder and editing the 'Layout.py' file, or by going directly into the 'Pages' folder and customizing each button on each page to send: single keypresses, key combos, text, scripts, mouse moves, clicks etc.
 
 These files will allow you to see how the default presets are created, and how to customize them to your own liking.
