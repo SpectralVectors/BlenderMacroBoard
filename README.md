@@ -12,7 +12,6 @@ There are two important settings that you must set manually, based on your setup
 
 If you do not have these set correctly you will see errors in Blender when you try to use the board.
 
-## About
 ### Layout
 ![](/images/BlenderMacroBoardPCBPreview.png)
 
@@ -68,6 +67,17 @@ The rest can be regarded as 'system' files and will not need to be edited by 99%
 You may wish to first 'Nuke' your Pico to ensure a clean install. After connecting it as described above, you can drag and drop 'flash_nuke.uf2' from the 'UF2' folder onto your Pico.
 
 Then, you can drag and drop 'adafruit-circuitpython-raspberry_pi_pico-en_US-7.2.3.uf2' from the 'UF2' folder (or download it directly from Circuitpython.com) onto your Pico, and it is now ready for the files in the 'Pico' folder. Open the folder and drag the files inside to your Pico so that 'code.py' is in the root directory of the Pico, replace the existing 'code.py', and it is finally ready for use!
+
+## Known Issues
+The KiCAD files folder contains everything you should need to open up the design in KiCAD and change any elements.
+
+The Gerber files are there for anyone not comfortable generating them on their own, however, I only created Gerber files for Rev 001 of the board, which turned out to have an issue that prevents the top rotary from properly functioning. This can be modified or omitted from the design and the device will otherwise function normally.
+
+There is a Rev 002 KiCAD file that represents my attempt to address that, and a few other issues, however, I did not generate Gerber files or have a test board made from this iteration, so I cannot guarantee it is without fault.
+
+Periodically, the board stops responding, and requires a restart of the PC to get it to function again. Most of the time this issue can be resolved by pressing the Reset button on the board.
+
+Since the USB port and drive letter are set manually, it is easy for one of them to be set incorrectly and cause errors in Blender.
 
 ## Roadmap
 The design philosophy of the device is to change Blender as little as possible, make using the device as simple as pluggin in a keyboard, and not require remapping of keys/controls, or anything that could potentially create conflicts with Blender's keymap, future keymap additions, or any of the thousands of addons that come with their own custom keymaps.
