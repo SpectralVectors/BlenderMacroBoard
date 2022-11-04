@@ -4,7 +4,7 @@ _Work in Progress - Alpha Build_
 An open-source, customizable hardware control surface for Blender.
 
 ## Using the Board
-There are two important settings that you must set manually, based on your setup:
+There are two important settings that you must adjust manually, based on your setup:
 
 1 - The Pico will show up as a USB stick on your system, allowing you to open and edit the files while you use the device. The location of the Scripts folder is currently hard-coded into the script. For me, it is the __G:/__ drive, for most Windows users it will likely be __D:/__ or __E:/__.
 
