@@ -60,7 +60,8 @@ __Pages__ is a folder containing all the user preset Pages.
 
 __Page1__ is a preset file. Here you can define what function each key, rotary turn and press perform, and what name will be displayed in the Addon in Blender. You can have as many pages as you want, but you will have to update your __Layout__ file to reflect any additional pages.
 
-The red arrows point to files that the user may wish to edit, the Preset pages, the Scripts, and the Layout (for adding extra pages and more advanced functions).
+The red arrows point to files that the user may wish to edit: the Preset pages, the Scripts, and the Layout (for adding extra pages and more advanced functions).
+
 The rest can be regarded as 'system' files and will not need to be edited by 99% of users.
 
 ### Pico Prep (if you are building from scratch)
