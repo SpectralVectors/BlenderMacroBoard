@@ -78,9 +78,9 @@ Page2_Rotary1_Right_Name = 'Brush Size Down'
 def Page2_Rotary1_Right():
     kb.send(right_bracket)
 
-Page2_Rotary1_Button_Name = 'Sculpt Mode Toggle'
+Page2_Rotary1_Button_Name = 'Sculpt/Draw Mode Toggle'
 def Page2_Rotary1_Button():
-    command('bpy.ops.gpencil.sculptmode_toggle()')
+    command('bpy.ops.object.mode_set(mode='PAINT_GPENCIL') if bpy.context.mode == 'SCULPT_GPENCIL' else bpy.ops.object.mode_set(mode='SCULPT_GPENCIL')')
 
 # Rotary 2
 Page2_Rotary2_Left_Name = ''
