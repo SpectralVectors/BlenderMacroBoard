@@ -80,7 +80,7 @@ def Page2_Rotary1_Right():
 
 Page2_Rotary1_Button_Name = 'Sculpt/Draw Mode Toggle'
 def Page2_Rotary1_Button():
-    command('bpy.ops.object.mode_set(mode='PAINT_GPENCIL') if bpy.context.mode == 'SCULPT_GPENCIL' else bpy.ops.object.mode_set(mode='SCULPT_GPENCIL')')
+    command("bpy.ops.object.mode_set(mode='PAINT_GPENCIL') if bpy.context.mode == 'SCULPT_GPENCIL' else bpy.ops.object.mode_set(mode='SCULPT_GPENCIL')")
 
 # Rotary 2
 Page2_Rotary2_Left_Name = ''
