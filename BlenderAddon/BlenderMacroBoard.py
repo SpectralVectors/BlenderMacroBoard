@@ -1,7 +1,7 @@
 bl_info = {
     "name": "BlenderMacroBoard",
     "author": "Spectral Vectors",
-    "version": (0, 0, 3),
+    "version": (0, 0, 4),
     "blender": (2, 90, 0),
     "location": "Edit > Preferences > Addons > BlenderMacroBoard",
     "description": "Syncs your Board with Blender",
@@ -193,9 +193,9 @@ class KeyLayoutViewer(bpy.types.Operator):
         column = box.column(align=True)
         row = column.row(align=True)
         box = row.box()
-        box.label(text='Reset Board', icon='QUIT')
-        box = row.box()
         box.label(text='Scrub Timeline', icon='FILE_REFRESH')
+        box = row.box()
+        box.label(text='Reset Board', icon='QUIT')
         box = row.box()
         box.label(text='Page Change', icon='DUPLICATE')
 
