@@ -91,9 +91,8 @@ Page2_Rotary2_Right_Name = ''
 def Page2_Rotary2_Right():
     print('Page 2 Rotary 2 Right')
 
-Page2_Rotary2_Button_Name = ''
+Page2_Rotary2_Button_Name = 'Insert Blank Keyframe'
 def Page2_Rotary2_Button():
-    name = 'Insert Blank Keyframe'
     command('bpy.ops.gpencil.blank_frame_add(all_layers=True)')
 
 # Rotary 3
