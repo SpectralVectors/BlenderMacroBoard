@@ -1,7 +1,7 @@
 bl_info = {
     "name": "BlenderMacroBoard",
     "author": "Spectral Vectors",
-    "version": (0, 0, 4),
+    "version": (0, 0, 5),
     "blender": (2, 90, 0),
     "location": "Edit > Preferences > Addons > BlenderMacroBoard",
     "description": "Syncs your Board with Blender",
@@ -10,26 +10,31 @@ bl_info = {
     "category": "Addons",
 }
 
-def install_serial():
+def install_dependencies():
     import subprocess
     import sys
     import os
     
+    libraries = ['pyserial', 'wmi']
+
     python_exe = os.path.join(sys.prefix, 'bin', 'python.exe')
     target = os.path.join(sys.prefix, 'lib', 'site-packages')
     
     subprocess.call([python_exe, '-m', 'ensurepip'])
     subprocess.call([python_exe, '-m', 'pip', 'install', '--upgrade', 'pip'])
     
-    subprocess.call([python_exe, '-m', 'pip', 'install', '--upgrade', 'pyserial', '-t', target])
+    for library in libraries:
+        subprocess.call([python_exe, '-m', 'pip', 'install', '--upgrade', library, '-t', target])
     
     return{'FINISHED'}
 
 import bpy
 try:
     import serial
+    import serial.tools.list_ports
+    import wmi
 except:
-    install_serial()
+    install_dependencies()
 
 class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
@@ -153,6 +158,12 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
         description='The port used by the board for serial communication, often: Win: COM4, Linux: ttyACM0, Mac: /dev/tty.usbmodem...',
     )
 
+    DriveLetter : bpy.props.StringProperty(
+        name='Drive Letter',
+        default='G:',
+        description='The drive letter of the storage on the board, often: Win: D:, E:,...',
+    )
+
 class SerialCommand(bpy.types.Operator):
     """Execute a command from serial"""
     
@@ -166,6 +177,52 @@ class SerialCommand(bpy.types.Operator):
         text = ser.readline().decode('utf-8')
         exec(text)
         ser.close()
+
+        return {'FINISHED'}
+    
+class AutoDetectBoard(bpy.types.Operator):
+    """Automatically detect the port and drive letter of the board."""
+    
+    bl_idname = "addon.autodetect_board"
+    bl_label = "Autodetect"
+
+    def execute(self, context):
+
+        bmp = bpy.context.scene.bmp
+
+        # Get the port number
+        list = serial.tools.list_ports.comports(include_links=False)
+
+        for item in list:
+            if item.description.startswith('USB') and item.vid == 9114 and item.pid == 33012:
+                bmp.Port = item.name
+
+        # Get the drive letter
+        model = 'Raspberr Pico USB Device'
+
+        disks                      = wmi.WMI().Win32_DiskDrive()
+        drives_to_partitions       = wmi.WMI().Win32_DiskDriveToDiskPartition()
+        paritions_to_logical_disks = wmi.WMI().Win32_LogicalDiskToPartition()
+
+        drive_letter_name       = None
+        cf_drive_partition_name = None
+        drive_device_id         = None
+
+        for disk in disks:
+            if disk.Model == model:
+                drive_device_id = disk.DeviceID
+
+        if drive_device_id != None:
+            for d_2_p in drives_to_partitions:
+                if d_2_p.Antecedent.DeviceID == drive_device_id:
+                    cf_drive_partition_name = d_2_p.Dependent.DeviceID 
+
+        if cf_drive_partition_name != None:
+            for p_2_ld in paritions_to_logical_disks:
+                if p_2_ld.Antecedent.DeviceID == cf_drive_partition_name:
+                    drive_letter_name = p_2_ld.Dependent.DeviceID
+
+        bmp.DriveLetter = drive_letter_name
 
         return {'FINISHED'}
 
@@ -291,6 +348,10 @@ class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
         box = layout.box()
         row = box.row()
         row.prop(bmp, 'Port')
+        row = box.row()
+        row.prop(bmp, 'DriveLetter')
+        row = box.row()
+        row.operator('addon.autodetect_board')
 
 
 classes = [
@@ -299,6 +360,7 @@ classes = [
     WM_MT_PageNotification,
     SerialCommand,
     KeyLayoutViewer,
+    AutoDetectBoard,
 ]
 
 def register():
@@ -307,11 +369,36 @@ def register():
 
     bpy.types.Scene.bmp = bpy.props.PointerProperty(type=BlenderMacroBoardProperties)
     bpy.types.STATUSBAR_HT_header.append(WM_MT_PageNotification.menu_draw)
-    #bpy.types.TOPBAR_MT_editor_menus.prepend(WM_MT_PageNotification.menu_draw)
+
+    wm = bpy.context.window_manager
+    kc = wm.keyconfigs.addon
+
+    km = kc.keymaps.new(
+        name="Window",
+        space_type='EMPTY',
+        region_type='WINDOW'
+        )
+        
+    kmi = km.keymap_items.new(
+        "addon.serial_command",
+        'INSERT',
+        'PRESS',
+        shift = 1,
+        ctrl = 1,
+        alt = 1,
+        )
+
+    kmi.active = True
 
 def unregister():
+    wm = bpy.context.window_manager
+    km = wm.keyconfigs.addon.keymaps['Window']
+
+    for kmi in wm.keyconfigs.addon.keymaps['Window'].keymap_items:
+        if kmi.idname == 'addon.serial_command':
+            km.keymap_items.remove(kmi)
+
     bpy.types.STATUSBAR_HT_header.remove(WM_MT_PageNotification.menu_draw)
-    #bpy.types.TOPBAR_MT_editor_menus.remove(WM_MT_PageNotification.menu_draw)
 
     for cls in classes:
         bpy.utils.unregister_class(cls)

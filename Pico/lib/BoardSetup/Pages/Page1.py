@@ -35,7 +35,7 @@ def Page1_Button3():
 # Button 4
 Page1_Button4_Name = 'Transform Script'
 def Page1_Button4():
-    run_script('G:/lib/Scripts/ObjectTest.py')
+    run_script('ObjectTest.py')
     print('Page 1 Button 4')
     wait(0.1)
 

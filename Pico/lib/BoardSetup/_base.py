@@ -9,20 +9,24 @@ from adafruit_hid.mouse import Mouse
 # Importing the shortened keycodes
 from BoardSetup._shortcodes import *
 
-# Convenience variable
+# Convenience variables
 kb = Keyboard(usb_hid.devices)
 text = KeyboardLayoutUS(kb)
 mouse = Mouse(usb_hid.devices)
 
+# The location of the Pico storage and Scripts folder
+drive = 'G:'
+path = '/lib/Scripts/'
+
 # Helper function to make running scripts only a single line
-def run_script(filepath):
-    kb.send(shift,ctrl,alt,a)
+def run_script(script):
+    kb.send(shift,ctrl,alt,insert)
     wait(0.1)
-    print(f"exec(open('{filepath}').read())")
+    print(f"exec(open('{drive}{path}{script}').read())")
 
 # Helper function to allow running commands in the background
 def command(command):
-    kb.send(shift,ctrl,alt,a)
+    kb.send(shift,ctrl,alt,insert)
     wait(0.1)
     print(f"import bpy;{command}")
     kb.send(left,right)
