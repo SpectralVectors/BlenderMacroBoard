@@ -1,7 +1,7 @@
 bl_info = {
     "name": "BlenderMacroBoard",
     "author": "Spectral Vectors",
-    "version": (0, 0, 5),
+    "version": (0, 0, 6),
     "blender": (2, 90, 0),
     "location": "Edit > Preferences > Addons > BlenderMacroBoard",
     "description": "Syncs your Board with Blender",
@@ -224,6 +224,12 @@ class AutoDetectBoard(bpy.types.Operator):
 
         bmp.DriveLetter = drive_letter_name
 
+        drive = bmp.DriveLetter
+
+        file = open(f'{drive}/lib/BoardSetup/_drive.py', 'w')
+        file.write(f"drive = '{drive}'")
+        file.close()
+
         return {'FINISHED'}
 
 class KeyLayoutViewer(bpy.types.Operator):
@@ -310,6 +316,8 @@ class KeyLayoutViewer(bpy.types.Operator):
         box = column.box()
         box.label(text=bmp.R3Button, icon='SORT_ASC')
 
+        layout.operator('addon.autodetect_board', icon='EXTERNAL_DRIVE')
+
 
 class WM_MT_PageNotification(bpy.types.Menu):
     bl_label = 'Current Page'
@@ -351,7 +359,7 @@ class BlenderMacroBoardPreferences(bpy.types.AddonPreferences):
         row = box.row()
         row.prop(bmp, 'DriveLetter')
         row = box.row()
-        row.operator('addon.autodetect_board')
+        row.operator('addon.autodetect_board', icon='EXTERNAL_DRIVE')
 
 
 classes = [
