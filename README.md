@@ -3,24 +3,42 @@ _Work in Progress - Alpha Build_
 
 An open-source, customizable hardware control surface for Blender.
 
-## Using the Board
-There are two important settings that you must adjust manually, based on your setup:
+## What's in this Repo?
+__BlenderAddon__ contains all the files for the Blender addon, currently just 'BlenderMacroBoard.py'
 
-1 - The Pico will show up as a USB stick on your system, allowing you to open and edit the files while you use the device. The location of the Scripts folder is currently hard-coded into the script. For me, it is the __G:/__ drive, for most Windows users it will likely be __D:/__ or __E:/__.
+__KiCAD Gerber Files__ contains all the design files for KiCAD if you wish to modify the original design, as well as pregenerated Gerber files if you wish to have PCBs made from the existing design.
 
-2 - The same is true for COM port that allows Blender to communicate with the board. After installing the Blender Addon, open up the Addon preferences, and set __USB Port__, default is __COM4__, for most Windows users it will be __COM3__, __COM4__, or __COM5__
+__Pico__ contains all the files needed for the Raspberry Pi Pico. Drag and drop __code.py__ and the __lib__ folder onto your Pico at any time and replace the existing __code.py__ and __lib__ folder in order to update the board, then press the Reset button to complete the update. (This assumes you have already flashed your Pico with a .uf2, if not, check the next folder...)
 
-If you do not have these set correctly you will see errors in Blender when you try to use the board.
+__UF2__ contains the Adafruit CircuitPython firmware that powers the board. If you have an assembled and tested unit you will not need to use this, if you are building from scratch then the 'nuke' uf2 can clear your existing memory before using the Adafruit uf2 to set up the system. See other guides online for how to properly flash a Pico.
+
+__images__ contains the images on this web page, and are not necessary to build or operate the board.
+
+## Setup the Board
+Connect the board to your PC.
+
+Ensure that you have the latest software: Download 'BlenderMacroBoard.py', and 'PicoFiles.zip' from the Releases section.
+
+Unzip 'PicoFiles.zip', and drag and drop 'code.py', and the 'lib' folder onto your Pico. You may be asked if you want to replace the files, and you do, so click Yes to All.
+
+Press the reset button on the Pico to finish the update.
+
+Open Blender with Administrator privileges in Windows (right-click, select 'Run as Administrator'), then go to Edit > Preferences > Addons > Install.. and select 'BlenderMacroBoard.py'.
+
+Close Blender. This is the only time you will need Administrator privileges, from now on you can just open Blender normally.
+
+Reopen Blender, on the bottom right of the screen you should see the BlenderMacroBoard Panel, it will say 'General (Page 1)'.
+
+Click on the button and it will open a panel. Above the OK button is a button called 'Autodetect'.
+
+Clicking 'Autodetect' will automatically identify and set the communication port, as well as the location of the 'Scripts' folder on the Pico.
+
+Your board should now be ready to use!
+
+(You may have to cycle through the pages for all the shortcuts to display properly, this will be addressed in a future update.)
 
 ### Layout
 ![](/images/BlenderMacroBoardPCBPreview.png)
-
-### Setup
-Once you have assembled the board, connect it via USB. Open the board in your file explorer, and navigate to the __Scripts__ folder, ensure that the drive letter in the script matches the drive that your board is connected to, if it is not correct, update it and save the file.
-
-Open Blender and install the 'BlenderMacroBoard.py' found in the 'BlenderAddon' folder, then, in the addon preferences, set your COM port. Try __COM3__, __COM4__, or __COM5__, you will know it is working when the Page Change button starts to work.
-
-Then you can start experimenting with the keys and rotary encoders. Any key or encoder can be assigned to a single keypress, a key combination, a single line bpy command, a pre-written script stored on the device, a delay or some combination of all of the above.
 
 ### Editing
 You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. _(Open __code.py__ in Thonny, and press Run)_
