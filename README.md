@@ -25,7 +25,9 @@ Press the reset button on the Pico to finish the update.
 
 Open Blender with Administrator privileges in Windows (right-click, select 'Run as Administrator'), then go to Edit > Preferences > Addons > Install.. and select 'BlenderMacroBoard.py'.
 
-Close Blender. This is the only time you will need Administrator privileges, from now on you can just open Blender normally.
+*IMPORTANT* Close Blender. In order to connect to the board, we need to reset the Python console that installed the libraries in the previous step, this means restarting Blender. If you don't restart Blender you will get errors when you try to 'Autodetect'.
+
+This is the only time you will need Administrator privileges, from now on you can just open Blender normally.
 
 Reopen Blender, on the bottom right of the screen you should see the BlenderMacroBoard Panel, it will say 'General (Page 1)'.
 
