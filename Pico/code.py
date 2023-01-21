@@ -60,6 +60,7 @@ pot{i+1} = AnalogIn(board.A{i})
 
 # Check for input in an infinite loop
 while True:
+    
     # Button 0 - Page Change
     if button0.value:
         page += 1
