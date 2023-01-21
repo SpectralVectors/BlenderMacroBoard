@@ -96,8 +96,6 @@ There is a Rev 002 KiCAD file that represents my attempt to address that, and a 
 
 Periodically, the board stops responding, and requires a restart of the PC to get it to function again. Most of the time this issue can be resolved by pressing the Reset button on the board.
 
-Since the USB port and drive letter are set manually, it is easy for one of them to be set incorrectly and cause errors in Blender.
-
 ## Roadmap
 The design philosophy of the device is to change Blender as little as possible, make using the device as simple as pluggin in a keyboard, and not require remapping of keys/controls, or anything that could potentially create conflicts with Blender's keymap, future keymap additions, or any of the thousands of addons that come with their own custom keymaps.
 
