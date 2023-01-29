@@ -40,8 +40,9 @@ def Page1_Button4():
     wait(0.1)
 
 # Button 5
-Page1_Button5_Name = ''
+Page1_Button5_Name = 'SubSmooth'
 def Page1_Button5():
+    run_script('SubSmooth.py')
     print('Page 1 Button 5')
     wait(0.1)
 
@@ -76,12 +77,12 @@ def Page1_Button9():
 # Rotary 1
 Page1_Rotary1_Left_Name = 'Rotate X +5'
 def Page1_Rotary1_Left():
-    kb.send(r, x, kb5, enter)
+    command('bpy.context.object.rotation_euler[0] += 0.08726646')
     print('Page 1 Rotary 1 Left')
 
 Page1_Rotary1_Right_Name = 'Rotate X -5'
 def Page1_Rotary1_Right():
-    kb.send(r, x, minus, kb5, enter)
+    command('bpy.context.object.rotation_euler[0] -= 0.08726646')
     print('Page 1 Rotary 1 Right')
 
 Page1_Rotary1_Button_Name = 'Keyframe Rotation X'
@@ -91,12 +92,12 @@ def Page1_Rotary1_Button():
 # Rotary 2
 Page1_Rotary2_Left_Name = 'Rotate Y +5'
 def Page1_Rotary2_Left():
-    kb.send(r, y, kb5, enter)
+    command('bpy.context.object.rotation_euler[1] += 0.08726646')
     print('Page 1 Rotary 2 Left')
 
 Page1_Rotary2_Right_Name = 'Rotate Y -5'
 def Page1_Rotary2_Right():
-    kb.send(r, y, minus, kb5, enter)
+    command('bpy.context.object.rotation_euler[1] -= 0.08726646')
     print('Page 1 Rotary 2 Right')
 
 Page1_Rotary2_Button_Name = 'Keyframe Rotation Y'
@@ -106,12 +107,12 @@ def Page1_Rotary2_Button():
 # Rotary 3
 Page1_Rotary3_Left_Name = 'Rotate Z +5'
 def Page1_Rotary3_Left():
-    kb.send(r, z, kb5, enter)
+    command('bpy.context.object.rotation_euler[2] += 0.08726646')
     print('Page 1 Rotary 3 Left')
 
 Page1_Rotary3_Right_Name = 'Rotate Z -5'
 def Page1_Rotary3_Right():
-    kb.send(r, z, minus, kb5, enter)
+    command('bpy.context.object.rotation_euler[2] -= 0.08726646')
     print('Page 1 Rotary 3 Right')
 
 Page1_Rotary3_Button_Name = 'Keyframe Rotation Z'

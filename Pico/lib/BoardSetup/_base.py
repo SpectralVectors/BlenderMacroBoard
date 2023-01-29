@@ -22,8 +22,7 @@ path = '/lib/Scripts/'
 def command(command):
     kb.send(shift,ctrl,alt,insert)
     wait(0.1)
-    print(f"import bpy;{command}")
-    kb.send(left,right)
+    print(f"import bpy;{command};bpy.context.object.hide_render=bpy.context.object.hide_render")
 
 # Helper function to make running scripts only a single line
 def run_script(script):
