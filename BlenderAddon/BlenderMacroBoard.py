@@ -154,7 +154,7 @@ class BlenderMacroBoardProperties(bpy.types.PropertyGroup):
 
     Port : bpy.props.StringProperty(
         name='USB Port',
-        default='COM4',
+        default='COM3',
         description='The port used by the board for serial communication, often: Win: COM4, Linux: ttyACM0, Mac: /dev/tty.usbmodem...',
     )
 
