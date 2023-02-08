@@ -26,47 +26,51 @@ def Page1_Button2():
     wait(0.1)
 
 # Button 3
-Page1_Button3_Name = 'Enter'
+Page1_Button3_Name = 'Redo'
 def Page1_Button3():
-    kb.send(enter)
+    kb.send(shift, ctrl, z)
     print('Page 1 Button 3')
     wait(0.1)
 
 # Button 4
-Page1_Button4_Name = 'Transform Script'
+Page1_Button4_Name = 'Cycle Edit Mode'
 def Page1_Button4():
-    run_script('ObjectTest.py')
+    run_script('CycleEditModes.py')
     print('Page 1 Button 4')
     wait(0.1)
 
 # Button 5
-Page1_Button5_Name = 'SubSmooth'
+Page1_Button5_Name = 'Merge at Center'
 def Page1_Button5():
-    run_script('SubSmooth.py')
+    command("bpy.ops.mesh.merge(type='CENTER') if bpy.context.object.mode == 'EDIT' else print('Cannot perform the operation in this context')")
     print('Page 1 Button 5')
     wait(0.1)
 
 # Button 6
-Page1_Button6_Name = ''
+Page1_Button6_Name = 'Mark as Seam'
 def Page1_Button6():
+    command("bpy.ops.mesh.mark_seam(clear=False) if bpy.context.object.mode == 'EDIT' else print('Cannot perform the operation in this context')")
     print('Page 1 Button 6')
     wait(0.1)
 
 # Button 7
-Page1_Button7_Name = ''
+Page1_Button7_Name = 'Jump to Previous Keyframe'
 def Page1_Button7():
+    kb.send(down)
     print('Page 1 Button 7')
     wait(0.1)
 
 # Button 8
-Page1_Button8_Name = ''
+Page1_Button8_Name = 'Clear Keyframe'
 def Page1_Button8():
+    kb.send(shift, alt, i)
     print('Page 1 Button 8')
     wait(0.1)
 
 # Button 9
-Page1_Button9_Name = ''
+Page1_Button9_Name = 'Jump to Next Keyframe'
 def Page1_Button9():
+    kb.send(up)
     print('Page 1 Button 9')
     wait(0.1)
 
