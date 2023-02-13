@@ -61,9 +61,9 @@ def Page1_Button7():
     wait(0.1)
 
 # Button 8
-Page1_Button8_Name = 'Clear Keyframe'
+Page1_Button8_Name = 'Delete Active'
 def Page1_Button8():
-    kb.send(shift, alt, i)
+    kb.send(x, d)
     print('Page 1 Button 8')
     wait(0.1)
 
