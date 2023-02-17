@@ -81,7 +81,7 @@ def Page1_Button9():
 # Rotary 1
 Page1_Rotary1_Left_Name = 'Rotate X +5'
 def Page1_Rotary1_Left():
-    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(True,False,False)))
+    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(True,False,False))')
     print('Page 1 Rotary 1 Left')
 
 Page1_Rotary1_Right_Name = 'Rotate X -5'
