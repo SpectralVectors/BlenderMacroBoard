@@ -83,6 +83,7 @@ def Page4_Rotary1_Right():
 
 Page4_Rotary1_Button_Name = ''
 def Page4_Rotary1_Button():
+    command('bpy.data.shape_keys["Key"].key_blocks["Blink"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
     print('Page 4 Rotary 1 Button')
     wait(0.1)
 
@@ -99,6 +100,7 @@ def Page4_Rotary2_Right():
 
 Page4_Rotary2_Button_Name = ''
 def Page4_Rotary2_Button():
+    command('bpy.data.shape_keys["Key"].key_blocks["JawOpen"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
     print('Page 4 Rotary 2 Button')
     wait(0.1)
 
@@ -115,5 +117,6 @@ def Page4_Rotary3_Right():
 
 Page4_Rotary3_Button_Name = ''
 def Page4_Rotary3_Button():
+    command('bpy.data.shape_keys["Key"].key_blocks["Joy"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
     print('Page 4 Rotary 3 Button')
     wait(0.1)
