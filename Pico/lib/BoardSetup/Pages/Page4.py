@@ -90,12 +90,12 @@ def Page4_Rotary1_Button():
 # Rotary 2
 Page4_Rotary2_Left_Name = 'JawOpen (Down)'
 def Page4_Rotary2_Left():
-    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value -= 0.05")
+    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value += 0.05")
     print('Page 4 Rotary 2 Left')
 
 Page4_Rotary2_Right_Name = 'JawOpen (Up)'
 def Page4_Rotary2_Right():
-    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value += 0.05")
+    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value -= 0.05")
     print('Page 4 Rotary 2 Right')
 
 Page4_Rotary2_Button_Name = 'JawOpen Keyframe'
