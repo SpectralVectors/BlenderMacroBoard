@@ -81,12 +81,12 @@ def Page1_Button9():
 # Rotary 1
 Page1_Rotary1_Left_Name = 'Rotate X +5'
 def Page1_Rotary1_Left():
-    command('bpy.context.object.rotation_euler[0] += 0.08726646')
+    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(True,False,False)))
     print('Page 1 Rotary 1 Left')
 
 Page1_Rotary1_Right_Name = 'Rotate X -5'
 def Page1_Rotary1_Right():
-    command('bpy.context.object.rotation_euler[0] -= 0.08726646')
+    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(True,False,False))')
     print('Page 1 Rotary 1 Right')
 
 Page1_Rotary1_Button_Name = 'Keyframe Rotation X'
@@ -96,12 +96,12 @@ def Page1_Rotary1_Button():
 # Rotary 2
 Page1_Rotary2_Left_Name = 'Rotate Y +5'
 def Page1_Rotary2_Left():
-    command('bpy.context.object.rotation_euler[1] += 0.08726646')
+    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(False,True,False))')
     print('Page 1 Rotary 2 Left')
 
 Page1_Rotary2_Right_Name = 'Rotate Y -5'
 def Page1_Rotary2_Right():
-    command('bpy.context.object.rotation_euler[1] -= 0.08726646')
+    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(False,True,False))')
     print('Page 1 Rotary 2 Right')
 
 Page1_Rotary2_Button_Name = 'Keyframe Rotation Y'
@@ -111,12 +111,12 @@ def Page1_Rotary2_Button():
 # Rotary 3
 Page1_Rotary3_Left_Name = 'Rotate Z +5'
 def Page1_Rotary3_Left():
-    command('bpy.context.object.rotation_euler[2] += 0.08726646')
+    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(False,False,True))')
     print('Page 1 Rotary 3 Left')
 
 Page1_Rotary3_Right_Name = 'Rotate Z -5'
 def Page1_Rotary3_Right():
-    command('bpy.context.object.rotation_euler[2] -= 0.08726646')
+    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(False,False,True))')
     print('Page 1 Rotary 3 Right')
 
 Page1_Rotary3_Button_Name = 'Keyframe Rotation Z'
