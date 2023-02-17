@@ -73,50 +73,50 @@ def Page4_Button9():
 # Rotary 1
 Page4_Rotary1_Left_Name = 'Blink (Down)'
 def Page4_Rotary1_Left():
-    command('bpy.context.object.data.shape_keys.key_blocks['Blink'].value -= 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['Blink'].value -= 0.05")
     print('Page 4 Rotary 1 Left')
 
 Page4_Rotary1_Right_Name = 'Blink (Up)'
 def Page4_Rotary1_Right():
-    command('bpy.context.object.data.shape_keys.key_blocks['Blink'].value += 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['Blink'].value += 0.05")
     print('Page 4 Rotary 1 Right')
 
-Page4_Rotary1_Button_Name = ''
+Page4_Rotary1_Button_Name = 'Blink Keyframe'
 def Page4_Rotary1_Button():
-    command('bpy.data.shape_keys["Key"].key_blocks["Blink"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
+    command("bpy.data.shape_keys['Key'].key_blocks['Blink'].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)")
     print('Page 4 Rotary 1 Button')
     wait(0.1)
 
 # Rotary 2
 Page4_Rotary2_Left_Name = 'JawOpen (Down)'
 def Page4_Rotary2_Left():
-    command('bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value -= 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value -= 0.05")
     print('Page 4 Rotary 2 Left')
 
 Page4_Rotary2_Right_Name = 'JawOpen (Up)'
 def Page4_Rotary2_Right():
-    command('bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value += 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value += 0.05")
     print('Page 4 Rotary 2 Right')
 
-Page4_Rotary2_Button_Name = ''
+Page4_Rotary2_Button_Name = 'JawOpen Keyframe'
 def Page4_Rotary2_Button():
-    command('bpy.data.shape_keys["Key"].key_blocks["JawOpen"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
+    command("bpy.data.shape_keys['Key'].key_blocks['JawOpen'].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)")
     print('Page 4 Rotary 2 Button')
     wait(0.1)
 
 # Rotary 3
 Page4_Rotary3_Left_Name = 'Joy (Down)'
 def Page4_Rotary3_Left():
-    command('bpy.context.object.data.shape_keys.key_blocks['Joy'].value -= 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['Joy'].value -= 0.05")
     print('Page 4 Rotary 3 Left')
 
 Page4_Rotary3_Right_Name = 'Joy (Up)'
 def Page4_Rotary3_Right():
-    command('bpy.context.object.data.shape_keys.key_blocks['Joy'].value += 0.05')
+    command("bpy.context.object.data.shape_keys.key_blocks['Joy'].value += 0.05")
     print('Page 4 Rotary 3 Right')
 
-Page4_Rotary3_Button_Name = ''
+Page4_Rotary3_Button_Name = 'Joy Keyframe'
 def Page4_Rotary3_Button():
-    command('bpy.data.shape_keys["Key"].key_blocks["Joy"].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)')
+    command("bpy.data.shape_keys['Key'].key_blocks['Joy'].keyframe_insert(data_path='value', frame=bpy.data.scenes['Scene'].frame_current)")
     print('Page 4 Rotary 3 Button')
     wait(0.1)
