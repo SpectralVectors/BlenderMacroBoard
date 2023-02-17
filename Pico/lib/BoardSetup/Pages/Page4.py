@@ -71,12 +71,14 @@ def Page4_Button9():
 ################
 
 # Rotary 1
-Page4_Rotary1_Left_Name = ''
+Page4_Rotary1_Left_Name = 'Blink (Down)'
 def Page4_Rotary1_Left():
+    command('bpy.context.object.data.shape_keys.key_blocks['Blink'].value -= 0.05')
     print('Page 4 Rotary 1 Left')
 
-Page4_Rotary1_Right_Name = ''
+Page4_Rotary1_Right_Name = 'Blink (Up)'
 def Page4_Rotary1_Right():
+    command('bpy.context.object.data.shape_keys.key_blocks['Blink'].value += 0.05')
     print('Page 4 Rotary 1 Right')
 
 Page4_Rotary1_Button_Name = ''
@@ -85,12 +87,14 @@ def Page4_Rotary1_Button():
     wait(0.1)
 
 # Rotary 2
-Page4_Rotary2_Left_Name = ''
+Page4_Rotary2_Left_Name = 'JawOpen (Down)'
 def Page4_Rotary2_Left():
+    command('bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value -= 0.05')
     print('Page 4 Rotary 2 Left')
 
-Page4_Rotary2_Right_Name = ''
+Page4_Rotary2_Right_Name = 'JawOpen (Up)'
 def Page4_Rotary2_Right():
+    command('bpy.context.object.data.shape_keys.key_blocks['JawOpen'].value += 0.05')
     print('Page 4 Rotary 2 Right')
 
 Page4_Rotary2_Button_Name = ''
@@ -99,12 +103,14 @@ def Page4_Rotary2_Button():
     wait(0.1)
 
 # Rotary 3
-Page4_Rotary3_Left_Name = ''
+Page4_Rotary3_Left_Name = 'Joy (Down)'
 def Page4_Rotary3_Left():
+    command('bpy.context.object.data.shape_keys.key_blocks['Joy'].value -= 0.05')
     print('Page 4 Rotary 3 Left')
 
-Page4_Rotary3_Right_Name = ''
+Page4_Rotary3_Right_Name = 'Joy (Up)'
 def Page4_Rotary3_Right():
+    command('bpy.context.object.data.shape_keys.key_blocks['Joy'].value += 0.05')
     print('Page 4 Rotary 3 Right')
 
 Page4_Rotary3_Button_Name = ''
