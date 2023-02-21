@@ -35,7 +35,7 @@ def Page1_Button3():
 # Button 4
 Page1_Button4_Name = 'Cycle Edit Mode'
 def Page1_Button4():
-    run_script('CycleEditModes.py')
+    script('CycleEditModes')
     print('Page 1 Button 4')
     wait(0.1)
 
@@ -81,45 +81,54 @@ def Page1_Button9():
 # Rotary 1
 Page1_Rotary1_Left_Name = 'Rotate X +5'
 def Page1_Rotary1_Left():
-    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(True,False,False))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=1;bmp.Axis=0')
+    script('RotateActive')
     print('Page 1 Rotary 1 Left')
 
 Page1_Rotary1_Right_Name = 'Rotate X -5'
 def Page1_Rotary1_Right():
-    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(True,False,False))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=-1;bmp.Axis=0')
+    script('RotateActive')
     print('Page 1 Rotary 1 Right')
 
 Page1_Rotary1_Button_Name = 'Keyframe Rotation X'
 def Page1_Rotary1_Button():
-    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=0, frame=bpy.data.scenes['Scene'].frame_current)")
+    command("bmp=bpy.context.scene.bmp;bmp.Axis=0")
+    script('KeyframeActive')
 
 # Rotary 2
 Page1_Rotary2_Left_Name = 'Rotate Y +5'
 def Page1_Rotary2_Left():
-    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(False,True,False))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=1;bmp.Axis=1')
+    script('RotateActive')
     print('Page 1 Rotary 2 Left')
 
 Page1_Rotary2_Right_Name = 'Rotate Y -5'
 def Page1_Rotary2_Right():
-    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(False,True,False))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=-1;bmp.Axis=1')
+    script('RotateActive')
     print('Page 1 Rotary 2 Right')
 
 Page1_Rotary2_Button_Name = 'Keyframe Rotation Y'
 def Page1_Rotary2_Button():
-    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=1, frame=bpy.data.scenes['Scene'].frame_current)")
+    command("bmp=bpy.context.scene.bmp;bmp.Axis=1")
+    script('KeyframeActive')
 
 # Rotary 3
 Page1_Rotary3_Left_Name = 'Rotate Z +5'
 def Page1_Rotary3_Left():
-    command('bpy.ops.transform.rotate(value=0.08726646, constraint_axis=(False,False,True))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=1;bmp.Axis=2')
+    script('RotateActive')
     print('Page 1 Rotary 3 Left')
 
 Page1_Rotary3_Right_Name = 'Rotate Z -5'
 def Page1_Rotary3_Right():
-    command('bpy.ops.transform.rotate(value=-0.08726646, constraint_axis=(False,False,True))')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=-1;bmp.Axis=2')
+    script('RotateActive')
     print('Page 1 Rotary 3 Right')
 
 Page1_Rotary3_Button_Name = 'Keyframe Rotation Z'
 def Page1_Rotary3_Button():
-    command("bpy.context.object.keyframe_insert(data_path='rotation_euler', index=2, frame=bpy.data.scenes['Scene'].frame_current)")
+    command("bmp=bpy.context.scene.bmp;bmp.Axis=2")
+    script('KeyframeActive')
 

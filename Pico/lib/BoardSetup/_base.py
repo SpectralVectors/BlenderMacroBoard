@@ -25,7 +25,7 @@ def command(command):
     print(f"import bpy;{command};bpy.context.object.hide_render=bpy.context.object.hide_render")
 
 # Helper function to make running scripts only a single line
-def run_script(script):
+def script(script):
     kb.send(shift,ctrl,alt,insert)
     wait(0.1)
-    print(f"exec(open('{drive}{path}{script}').read())")
+    print(f"exec(open('{drive}{path}{script}.py').read())")
