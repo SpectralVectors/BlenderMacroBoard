@@ -117,13 +117,13 @@ def Page1_Rotary2_Button():
 # Rotary 3
 Page1_Rotary3_Left_Name = 'Rotate Z +5'
 def Page1_Rotary3_Left():
-    command('bmp=bpy.context.scene.bmp;bmp.Direction=1;bmp.Axis=2')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=-1;bmp.Axis=2')
     script('RotateActive')
     print('Page 1 Rotary 3 Left')
 
 Page1_Rotary3_Right_Name = 'Rotate Z -5'
 def Page1_Rotary3_Right():
-    command('bmp=bpy.context.scene.bmp;bmp.Direction=-1;bmp.Axis=2')
+    command('bmp=bpy.context.scene.bmp;bmp.Direction=1;bmp.Axis=2')
     script('RotateActive')
     print('Page 1 Rotary 3 Right')
 
