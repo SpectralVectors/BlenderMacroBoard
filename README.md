@@ -4,7 +4,7 @@ _Work in Progress - Alpha Build_
 An open-source, customizable hardware control surface for Blender.
 
 ## What's in this Repo?
-__BlenderAddon__ contains all the files for the Blender addon, currently just 'BlenderMacroBoard.py'
+__BlenderAddon__ contains all the files for the Blender addon.
 
 __KiCAD Gerber Files__ contains all the design files for KiCAD if you wish to modify the original design, as well as pregenerated Gerber files if you wish to have PCBs made from the existing design.
 
