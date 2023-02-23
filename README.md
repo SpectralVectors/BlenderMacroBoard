@@ -1,4 +1,5 @@
 # BlenderMacroBoard
+![](/images/BlenderMacroBoardPCBPreview.png)
 _Work in Progress - Alpha Build_
 
 An open-source, customizable hardware control surface for Blender.
@@ -38,9 +39,6 @@ Clicking 'Autodetect' will automatically identify and set the communication port
 Your board should now be ready to use!
 
 (You may have to cycle through the pages for all the shortcuts to display properly, this will be addressed in a future update.)
-
-### Layout
-![](/images/BlenderMacroBoardPCBPreview.png)
 
 ### Editing
 You can edit the files on the device and save them, reset the board if it does not respond, or use Thonny to run the __code.py__ file again. _(Open __code.py__ in Thonny, and press Run)_
